@@ -1,30 +1,23 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-      <h2>Favorite Brewery</h2>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-11">
-      <h3><img src="{{$ctrl.favoriteBeer.images.icon}}" /> {{$ctrl.favoriteBeer.name}}</h3>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-6">
-      <a href="{{$ctrl.favoriteBeer.website}}">website</a>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-  <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-6">
-      <h4>{{$ctrl.favoriteBeer.description}}</h4>
-    </div>
-    <div class="col-md-1"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3>{{favoriteBeer.name}} <small>({{favoriteBeer.established}})</small></h3>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-10">
+                <div>
+                  {{favoriteBeer.description}}
+                </div>
+              </div>
+              <div class="col-md-2">
+                <img src="{{favoriteBeer.images.icon}}" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>

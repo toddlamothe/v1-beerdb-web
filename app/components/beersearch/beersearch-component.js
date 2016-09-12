@@ -7,13 +7,14 @@
           controller: ['$scope', 'beerService', function($scope, beerService) {
             console.log('[beerSearch controller]');
             var beerSearchController = this;
-            this.favoriteBeer = {
+            $scope.favoriteBeer = {
+              "name" : "loading..."
             };
 
             beerService.getBrewery()
               .success(function(data) {
-                console.log('  success! data = ', data);
-                // beerSearchController.favoriteBeer = data.data;
+                console.log('  success! brewery name = ', data.data[0].name);
+                $scope.favoriteBeer = data.data[0];
               })
               .error(function() {
                 console.log('  call to beerService.getBrewery failed');
