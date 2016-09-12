@@ -14,10 +14,6 @@
           return $http.get(url);
         }
 
-        // function getBeer() {
-        //   return { brewery: 'Six Point', name : 'Resin', abv: 9.2};
-        // }
-
         // Return functions as individual service calls
         return {
           getBrewery : getBrewery

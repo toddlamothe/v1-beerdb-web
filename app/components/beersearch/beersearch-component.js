@@ -8,13 +8,12 @@
             console.log('[beerSearch controller]');
             var beerSearchController = this;
             this.favoriteBeer = {
-              brewery : ""
             };
 
             beerService.getBrewery()
               .success(function(data) {
-                console.log('success! data = ', data);
-                beerSearchController.favoriteBeer = data.data;
+                console.log('  success! data = ', data);
+                // beerSearchController.favoriteBeer = data.data;
               })
               .error(function() {
                 console.log('  call to beerService.getBrewery failed');
