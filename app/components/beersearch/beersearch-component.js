@@ -6,14 +6,18 @@
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', function($scope, beerService) {
             console.log('[beerSearch controller]');
-            this.favoriteBeer = {};
+            var beerSearchController = this;
+            this.favoriteBeer = {
+              brewery : ""
+            };
 
             beerService.getBrewery()
               .success(function(data) {
                 console.log('success! data = ', data);
+                beerSearchController.favoriteBeer = data.data;
               })
               .error(function() {
-                console.log('  getBrewery failed');
+                console.log('  call to beerService.getBrewery failed');
               });
 
 //            this.favoriteBeer.brewery = beerService.getBrewery().name;
