@@ -12,11 +12,16 @@
           var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
           console.log('url = ', url);
           return $http.get(url);
-        }
+        };
+
+        function getBeers() {
+          return $http.get('');
+        };
 
         // Return functions as individual service calls
         return {
-          getBrewery : getBrewery
+          getBrewery : getBrewery,
+          getBeers : getBeers
         };
 
     }]);

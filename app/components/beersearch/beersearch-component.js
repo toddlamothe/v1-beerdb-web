@@ -11,6 +11,11 @@
               "name" : "loading..."
             };
 
+            $scope.brewerySearch = {
+              name: "",
+              isOrganic: false
+            };
+
             beerService.getBrewery()
               .success(function(data) {
                 console.log('  success! brewery name = ', data.data[0].name);
