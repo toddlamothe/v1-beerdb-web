@@ -102,13 +102,17 @@
       $httpBackend = $injector.get('$httpBackend');
       APP_CONFIG = $injector.get('APP_CONFIG');
       beerService = $injector.get('beerService');
-      $httpBackend.when("GET", APP_CONFIG.breweryDbBaseUrl + 'breweries').respond(mockBreweryPayload);
+      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
+      console.log('  will mock payload returned from url = ', APP_CONFIG.breweryDbBaseUrl + 'breweries');
+      // $httpBackend.when("GET", APP_CONFIG.breweryDbBaseUrl + 'breweries').respond(mockBreweryPayload);
+      //$httpBackend.when("GET", url).respond(mockBreweryPayload);
     }));
 
     it('should return mock brewery data', function() {
       //$httpBackend.flush();
-      console.log('beerService.getBrewery() = ', beerService.getBrewery());
+      console.log('  beerService.getBrewery() = ', beerService.getBrewery());
       beerService.getBrewery().success(function (data) {
+        console.log('  getBrewery');
         console.log('  data = ', data);
         expect(data.name).toBe('Test Brewery');
       });
@@ -117,10 +121,12 @@
     it('should return mock beer data', function() {
       //console.log('beerService.getBeers() = ', beerService.getBeers());
       beerService.getBeers().success(function(data) {
+        console.log('  getBeers');
         console.log('  data = ', data);
-        expect(data.name).toBe('Test Beer');
+        expect(data.name).toBe('Test Beer2');
       })
-    })
+    });
+
   });
 
 }());

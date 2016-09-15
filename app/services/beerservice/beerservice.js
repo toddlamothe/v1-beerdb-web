@@ -10,12 +10,12 @@
         function getBrewery() {
           //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?key=' + APP_CONFIG.breweryDbAPIKey + '&name=The%20Alchemist';
           var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
-          console.log('url = ', url);
+          console.log('  url = ', url);
           return $http.get(url);
         };
 
         function getBeers() {
-          return $http.get('');
+          return $http.get('nothing.com');
         };
 
         // Return functions as individual service calls
