@@ -6,8 +6,9 @@
       <form class="form-horizontal">
       <fieldset>
       <!-- Form Name -->
-      <legend>Brewery Search</legend>
-      <!-- Brewery Name -->
+      <div>
+        &nbsp;
+      </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="textinput">Name</label>
         <div class="col-md-4">
@@ -40,7 +41,113 @@
 
     </uib-tab>
     <uib-tab index="1" heading="Find Beers">
-      Beer search fields go here
+
+      <form class="form-horizontal">
+      <fieldset>
+        <div>
+          &nbsp;
+        </div>
+
+      <!-- Text input-->
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label class="col-md-4 control-label" for="textinput">Name</label>
+          <div class="col-md-6">
+          <input id="textinput" name="textinput" type="text" placeholder="enter a beer name" class="form-control input-md">
+
+
+          </div>
+        </div>
+        <div class="form-group col-md-8">
+
+        </div>
+      </div>
+
+      <!-- ABV -->
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label class="col-md-4 control-label" for="abv">ABV greater than</label>
+          <div class="col-md-4">
+            <select id="abv" name="abv" class="form-control">
+              <option value="3">3%</option>
+              <option value="4">4%</option>
+              <option value="5">5%</option>
+              <option value="6">6%</option>
+              <option value="7">7%</option>
+              <option value="8">8%</option>
+              <option value="9">9%</option>
+              <option value="10">10%</option>
+            </select>
+          </div>
+        </div>
+        <!-- ABV -->
+        <div class="form-group col-md-4">
+          <label class="col-md-4 control-label" for="abv">ABV less than</label>
+          <div class="col-md-4">
+            <select id="abv" name="abv" class="form-control">
+              <option value="3">3%</option>
+              <option value="4">4%</option>
+              <option value="5">5%</option>
+              <option value="6">6%</option>
+              <option value="7">7%</option>
+              <option value="8">8%</option>
+              <option value="9">9%</option>
+              <option value="10">10%</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+
+
+
+      <!-- IBU -->
+      <div class="row">
+        <div class="form-group col-md-4">
+          <label class="col-md-4 control-label" for="abv">IBU greater than</label>
+          <div class="col-md-4">
+            <select id="abv" name="abv" class="form-control">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
+              <option value="70">70</option>
+              <option value="80">80</option>
+            </select>
+          </div>
+        </div>
+        <!-- IBU -->
+        <div class="form-group col-md-4">
+          <label class="col-md-4 control-label" for="abv">IBU less than</label>
+          <div class="col-md-4">
+            <select id="abv" name="abv" class="form-control">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
+              <option value="70">70</option>
+              <option value="80">80</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+
+
+
+      </fieldset>
+      </form>
+
+
+
     </uib-tab>
   </uib-tabset>
   <hr />
@@ -50,7 +157,7 @@
     </div>
   </div>
   <div class="row">
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3>{{favoriteBeer.name}} <small ng-if="favoriteBeer.established">({{favoriteBeer.established}})</small></h3>
@@ -68,6 +175,6 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
   </div>
 </div>
