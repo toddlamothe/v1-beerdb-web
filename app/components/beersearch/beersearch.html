@@ -4,45 +4,45 @@
     <uib-tab index="0" heading="Find Breweries">
 
       <form class="form-horizontal">
-      <fieldset>
-        <!-- Form Name -->
-        <div>&nbsp;</div>
-        <div class="row">
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="textinput">Name</label>
-            <div class="col-md-6">
-              <input id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
+        <fieldset>
+          <!-- Form Name -->
+          <div>&nbsp;</div>
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label class="col-md-4 control-label" for="textinput">Name</label>
+              <div class="col-md-6">
+                <input ng-model="brewerySearch.name" id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
+              </div>
+            </div>
+            <div class="form-group col-md-8">
+
             </div>
           </div>
-          <div class="form-group col-md-8">
 
-          </div>
-        </div>
-
-        <!-- Filters -->
-        <div class="row">
-          <div class="form-group col-md-4">
-          <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
-          <div class="col-md-4">
-            <div class="checkbox">
-              <label for="BreweryFilters-0">
-                <input type="checkbox" name="BreweryFilters" id="BreweryFilters-0" value="organic">
-                Organic Only
-              </label>
-          	</div>
-          </div>
-        </div>
-      </div>
-        <!-- Button -->
-        <div class="row">
-          <div class="form-group col-md-2">
-            <label class="col-md-4 control-label" for="brewerySearch"></label>
-            <div class="col-md-4">
-              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary">Search</button> <!-- glyphicon glyphicon-search -->
+          <!-- Filters -->
+          <div class="row">
+            <div class="form-group col-md-4">
+              <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
+              <div class="col-md-4">
+                <div class="checkbox">
+                  <label for="BreweryFilters-0">
+                    <input type="checkbox" name="BreweryFilters" id="BreweryFilters-0" value="organic">
+                    Organic Only
+                  </label>
+              	</div>
+              </div>
             </div>
           </div>
-        </div>
-      </fieldset>
+          <!-- Button -->
+          <div class="row">
+            <div class="form-group col-md-2">
+              <label class="col-md-4 control-label" for="brewerySearch"></label>
+              <div class="col-md-4">
+                <button id="brewerySearch" name="brewerySearch" class="btn btn-primary">Search</button> <!-- glyphicon glyphicon-search -->
+              </div>
+            </div>
+          </div>
+        </fieldset>
       </form>
 
 
@@ -103,8 +103,6 @@
           </div>
       </div>
 
-
-
         <!-- IBU -->
         <div class="row">
           <div class="form-group col-md-4">
@@ -138,15 +136,24 @@
               </select>
             </div>
           </div>
+
           <div class="col-md-4">
 
           </div>
         </div>
 
+        <!-- Button -->
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label class="col-md-4 control-label" for="brewerySearch"></label>
+            <div class="col-md-4">
+              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary">Search</button> <!-- glyphicon glyphicon-search -->
+            </div>
+          </div>
+        </div>
+
       </fieldset>
       </form>
-
-
 
     </uib-tab>
   </uib-tabset>
