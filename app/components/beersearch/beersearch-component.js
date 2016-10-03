@@ -11,19 +11,26 @@
               "name" : "loading..."
             };
 
-            $scope.brewerySearch = {
+            $scope.searchResults = {};
+
+            $scope.searchParams = {
               name: "",
               isOrganic: false
             };
 
-            beerService.getBrewery()
-              .success(function(data) {
-                console.log('  success! brewery name = ', data.data[0].name);
-                $scope.favoriteBeer = data.data[0];
-              })
-              .error(function() {
-                console.log('  call to beerService.getBrewery failed');
-              });
+            $scope.brewerySearch = function() {
+              console.log('  brewerySearch');
+              $scope.searchResults = {};
+
+              beerService.getBrewery($scope.searchParams)
+                .success(function(data) {
+                  console.log('  success!');
+                  $scope.searchResults = data.data;
+                })
+                .error(function() {
+                  console.log('  call to beerService.getBrewery failed');
+                });
+            };
 
 //            this.favoriteBeer.brewery = beerService.getBrewery().name;
           }]

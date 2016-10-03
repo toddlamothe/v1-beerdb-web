@@ -7,9 +7,10 @@
         $log.info('[beerService]');
 
         // Define service functions
-        function getBrewery() {
-          //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?key=' + APP_CONFIG.breweryDbAPIKey + '&name=The%20Alchemist';
-          var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
+        function getBrewery(searchParams) {
+          console.log('  [getBrewery] searchParams: ', searchParams);
+          var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+          //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
           console.log('  url = ', url);
           return $http.get(url);
         };
