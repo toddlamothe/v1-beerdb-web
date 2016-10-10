@@ -31,8 +31,6 @@
                   console.log('  call to beerService.getBrewery failed');
                 });
             };
-
-//            this.favoriteBeer.brewery = beerService.getBrewery().name;
           }]
     });
 }());

@@ -11,7 +11,7 @@
           console.log('  [getBrewery] searchParams: ', searchParams);
           var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
           //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
-          console.log('  url = ', url);
+          console.log('  [getBrewery] url = ', url);
           return $http.get(url);
         };
 

@@ -11,7 +11,7 @@
         "data": [
           {
             "id": "pj4HJk",
-            "name": "Test Brewery",
+            "name": "asdf",
             "nameShortDisplay": "Test Brewery",
             "description": "The Alchemist is a 7 barrel brew pub specializing in hand-crafted  beer and casual pub fare.  All of our ales flow directly from our  basement brewery, which was designed and installed by our brewer and  co-proprietor John Kimmich.   We use only the finest imported malts and  domestic hops available to bring you the tastiest and finest selection  of beers in Vermont!",
             "website": "http://www.alchemistbeer.com/",
@@ -102,20 +102,28 @@
       $httpBackend = $injector.get('$httpBackend');
       APP_CONFIG = $injector.get('APP_CONFIG');
       beerService = $injector.get('beerService');
-      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries';
-      console.log('  will mock payload returned from url = ', APP_CONFIG.breweryDbBaseUrl + 'breweries');
-      // $httpBackend.when("GET", APP_CONFIG.breweryDbBaseUrl + 'breweries').respond(mockBreweryPayload);
-      //$httpBackend.when("GET", url).respond(mockBreweryPayload);
     }));
 
     it('should return mock brewery data', function() {
-      //$httpBackend.flush();
-      console.log('  beerService.getBrewery() = ', beerService.getBrewery());
-      beerService.getBrewery().success(function (data) {
-        console.log('  getBrewery');
-        console.log('  data = ', data);
-        expect(data.name).toBe('Test Brewery');
-      });
+      //console.log('  beerService.getBrewery() = ', beerService.getBrewery());
+      var searchParams = {
+        name: "Test Brewery",
+        isOrganic: false
+      };
+
+      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+      console.log('  [test] will mock payload returned from url = ', url);
+      console.log('  [test] searchParams = ', searchParams);
+
+      beerService.getBrewery(searchParams)
+        .success(function(data) {
+          console.log('  [test] getBrewery');
+          console.log('  [test] data = ', data);
+          expect(data.name).toBe('Test Brewery');
+        })
+        .error(function() {
+          console.error('  [test] Error calling service: ');
+        });
     });
 
     it('should return mock beer data', function() {
