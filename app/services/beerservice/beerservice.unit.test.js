@@ -111,18 +111,20 @@
         isOrganic: false
       };
 
-      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+      //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+      var url = 'http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Test%20Brewery';
+      $httpBackend.whenGET('GET', url).respond(["Toyota", "Honda", "Tesla"]);
       console.log('  [test] will mock payload returned from url = ', url);
       console.log('  [test] searchParams = ', searchParams);
 
       beerService.getBrewery(searchParams)
         .success(function(data) {
-          console.log('  [test] getBrewery');
+          console.log('  [test] getBrewery SUCCESS!');
           console.log('  [test] data = ', data);
           expect(data.name).toBe('Test Brewery');
         })
         .error(function() {
-          console.error('  [test] Error calling service: ');
+          console.error('  [test] Error calling service FAIL ');
         });
     });
 
