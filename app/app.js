@@ -6,7 +6,8 @@
     'BeerdbApp.beerSearch',
     'BeerdbApp.navbar',
     'ConfigurationService',
-    'BeerDbApp.BeerService'
+    'BeerDbApp.BeerService',
+    'angularSpinner'
   ]);
 
 }());

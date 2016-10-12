@@ -146,7 +146,7 @@
           <div class="form-group col-md-2">
             <label class="col-md-4 control-label" for="brewerySearch"></label>
             <div class="col-md-4">
-              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary">Search</button> <!-- glyphicon glyphicon-search -->
+              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="beerSearch()">Search</button> <!-- glyphicon glyphicon-search -->
             </div>
           </div>
         </div>
@@ -162,9 +162,6 @@
       <legend>Search Results</legend>
     </div>
   </div>
-  <!-- <div class="row" ng-show="searchResults.length=='undefined'">
-    No results found
-  </div> -->
   <div class="row">
     <div class="col-md-4" ng-repeat="brewery in searchResults">
         <div class="panel panel-default">
@@ -187,3 +184,4 @@
       </div>
   </div>
 </div>
+<span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>
