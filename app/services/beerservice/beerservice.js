@@ -7,15 +7,15 @@
         $log.info('[beerService]');
 
         // Define service functions
+
         function getBrewery(searchParams) {
-          // console.log('  [getBrewery] searchParams: ', searchParams);
           var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
-          // console.log('  [getBrewery] url = ', url);
           return $http.get(url);
         };
 
         function getBeers(searchParams) {
-          return $http.get(APP_CONFIG.breweryDbBaseUrl + 'beers?name=' + encodeURI(searchParams.name));
+          var url = APP_CONFIG.breweryDbBaseUrl + 'beers?name=' + encodeURI(searchParams.name)
+          return $http.get(url);
         };
 
         // Return functions as individual service calls
