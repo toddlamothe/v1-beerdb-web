@@ -107,15 +107,13 @@
     }));
 
     it('should return mock brewery data', function() {
-      //console.log('  beerService.getBrewery() = ', beerService.getBrewery());
       var searchParams = {
         name: "Test Brewery",
         isOrganic: false
       };
 
-      //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
-      var url = 'http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Budweiser';
-      $httpBackend.whenGET('http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Test%20Brewery')
+      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+      $httpBackend.whenGET(url)
         .respond(mockBreweryPayload);
 
       beerService.getBrewery(searchParams)
@@ -127,12 +125,19 @@
     });
 
     it('should return mock beer data', function() {
-      //console.log('beerService.getBeers() = ', beerService.getBeers());
-      beerService.getBeers().success(function(data) {
-        console.log('  getBeers');
-        console.log('  data = ', data);
-        expect(data.name).toBe('Test Beer2');
+
+      var searchParams = {
+        name: "Heady Topper"
+      };
+
+      var url = APP_CONFIG.breweryDbBaseUrl + 'beers?name=' + encodeURI(searchParams.name);
+      $httpBackend.whenGET(url)
+        .respond(mockBeerPayload);
+
+      beerService.getBeers(searchParams).success(function(data) {
+        expect(data.data[0].name).toBe('Test Beer');
       })
+      $httpBackend.flush();
     });
 
   });
