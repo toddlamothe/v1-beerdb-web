@@ -3,6 +3,7 @@
 
   var beerService = null,
     $httpBackend = null,
+    $rootScope,
     APP_CONFIG = null,
     mockBreweryPayload = {
         "currentPage": 1,
@@ -11,8 +12,8 @@
         "data": [
           {
             "id": "pj4HJk",
-            "name": "asdf",
-            "nameShortDisplay": "Test Brewery",
+            "name": "Test Brewery",
+            "nameShortDisplay": "The Alchemist",
             "description": "The Alchemist is a 7 barrel brew pub specializing in hand-crafted  beer and casual pub fare.  All of our ales flow directly from our  basement brewery, which was designed and installed by our brewer and  co-proprietor John Kimmich.   We use only the finest imported malts and  domestic hops available to bring you the tastiest and finest selection  of beers in Vermont!",
             "website": "http://www.alchemistbeer.com/",
             "established": "1976",
@@ -102,6 +103,7 @@
       $httpBackend = $injector.get('$httpBackend');
       APP_CONFIG = $injector.get('APP_CONFIG');
       beerService = $injector.get('beerService');
+      $rootScope = $injector.get('$rootScope');
     }));
 
     it('should return mock brewery data', function() {
@@ -112,20 +114,16 @@
       };
 
       //var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
-      var url = 'http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Test%20Brewery';
-      $httpBackend.whenGET('GET', url).respond(["Toyota", "Honda", "Tesla"]);
-      console.log('  [test] will mock payload returned from url = ', url);
-      console.log('  [test] searchParams = ', searchParams);
+      var url = 'http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Budweiser';
+      $httpBackend.whenGET('http://localhost:8010/services/beerdb/api/beerdb/breweries?name=Test%20Brewery')
+        .respond(mockBreweryPayload);
 
       beerService.getBrewery(searchParams)
         .success(function(data) {
-          console.log('  [test] getBrewery SUCCESS!');
-          console.log('  [test] data = ', data);
-          expect(data.name).toBe('Test Brewery');
-        })
-        .error(function() {
-          console.error('  [test] Error calling service FAIL ');
+          expect(data.data[0].name).toBe('Test Brewery');
         });
+
+        $httpBackend.flush();
     });
 
     it('should return mock beer data', function() {
