@@ -9,22 +9,27 @@
             var beerSearchController = this;
             $scope.spinnerActive = false;
 
-            $scope.searchResults = {};
+            $scope.brewerySearchResults = {};
+            $scope.beerSearchResults = {};
 
-            $scope.searchParams = {
+            $scope.brewerySearchParams = {
               name: "",
               isOrganic: false
+            };
+
+            $scope.beerSearchParams = {
+              name: ""
             };
 
             $scope.brewerySearch = function() {
               console.log('  brewerySearch');
               $scope.spinner(true);
-              $scope.searchResults = {};
+              $scope.clearSearchResults();
 
-              beerService.getBrewery($scope.searchParams)
+              beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
                   console.log('  success!');
-                  $scope.searchResults = data.data;
+                  $scope.brewerySearchResults = data.data;
                   $scope.spinner(false);
                 })
                 .error(function() {
@@ -36,24 +41,30 @@
             $scope.beerSearch = function() {
               console.log('  beerSearch');
               $scope.spinner(true);
-              $scope.searchResults = {};
+              $scope.clearSearchResults();
 
-              // beerService.getBrewery($scope.searchParams)
-              //   .success(function(data) {
-              //     console.log('  success!');
-              //     $scope.searchResults = data.data;
-              //     $scope.spinner(false);
-              //   })
-              //   .error(function() {
-              //     console.log('  call to beerService.getBrewery failed');
-              //     $scope.spinner(false);
-              //   });
+              beerService.getBeers($scope.beerSearchParams)
+                .success(function(data) {
+                  console.log('  success!');
+                  $scope.beerSearchResults = data.data;
+                  $scope.spinner(false);
+                })
+                .error(function() {
+                  console.log('  call to beerService.getBeers failed');
+                  $scope.spinner(false);
+                });
 
             };
 
             $scope.spinner = function(showSpinner) {
               $scope.spinnerActive = showSpinner;
             };
+
+            $scope.clearSearchResults = function() {
+              $scope.beerSearchResults = {};
+              $scope.brewerySearchResults = {};
+            };
+
           }]
     });
 }());

@@ -9,6 +9,7 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/angular-spinner/angular-spinner.js',
       'app.js',
       'components/**/*.js',
       'services/**/*.js',
