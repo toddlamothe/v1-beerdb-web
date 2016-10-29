@@ -13,13 +13,15 @@
             $scope.beerSearchResults = {};
 
             $scope.brewerySearchParams = {
-              name: "",
+              name: '',
               isOrganic: false
             };
 
             $scope.beerSearchParams = {
-              name: ""
+              name: ''
             };
+
+            $scope.showDetails = false;
 
             $scope.brewerySearch = function() {
               console.log('  brewerySearch');

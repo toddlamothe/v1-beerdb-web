@@ -38,14 +38,3 @@
       return config;
     })());
 }());
-
-
-
-  // config = {
-  //
-  // };
-// config.getEnvironment = function() {
-//   if (_api_environment) {
-//     return api_environment
-//   }
-// }
