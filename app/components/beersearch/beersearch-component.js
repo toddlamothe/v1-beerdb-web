@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BeerdbApp.beerSearch', [])
+  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards'])
     .component("beerSearch", {
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', function($scope, beerService) {
@@ -30,7 +30,6 @@
 
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
-                  console.log('  success!');
                   $scope.brewerySearchResults = data.data;
                   $scope.spinner(false);
                 })
@@ -47,7 +46,6 @@
 
               beerService.getBeers($scope.beerSearchParams)
                 .success(function(data) {
-                  console.log('  success!');
                   $scope.beerSearchResults = data.data;
                   $scope.spinner(false);
                 })

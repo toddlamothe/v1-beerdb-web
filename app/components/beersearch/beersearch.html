@@ -163,6 +163,11 @@
     </div>
   </div>
   <div class="row">
+    <div ng-repeat="brewery in brewerySearchResults">
+        Here is a brewery card:
+        <brewery-card>
+        </brewery-card>
+    </div>
     <div class="col-md-4" ng-repeat="brewery in brewerySearchResults">
         <div class="panel panel-default">
           <div class="panel-heading">
@@ -181,6 +186,11 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div ng-repeat="beer in beerSearchResults">
+          Here is a beer card:
+          <beer-card></beer-card>
       </div>
 
       <div class="col-md-4" ng-repeat="beer in beerSearchResults">
