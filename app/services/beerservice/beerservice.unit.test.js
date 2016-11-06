@@ -112,7 +112,7 @@
         isOrganic: false
       };
 
-      var url = APP_CONFIG.breweryDbBaseUrl + 'breweries?name=' + encodeURI(searchParams.name);
+      var url = APP_CONFIG.get('breweryDbBaseUrl') + 'breweries?name=' + encodeURI(searchParams.name);
       $httpBackend.whenGET(url)
         .respond(mockBreweryPayload);
 
@@ -130,7 +130,7 @@
         name: "Heady Topper"
       };
 
-      var url = APP_CONFIG.breweryDbBaseUrl + 'beers?name=' + encodeURI(searchParams.name);
+      var url = APP_CONFIG.get('breweryDbBaseUrl') + 'beers?name=' + encodeURI(searchParams.name);
       $httpBackend.whenGET(url)
         .respond(mockBeerPayload);
 

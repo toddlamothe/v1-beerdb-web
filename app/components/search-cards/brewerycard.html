@@ -1,1 +1,17 @@
-[ brewery card ]
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3>{{brewery.name}} <small ng-if="brewery.established">({{brewery.established}})</small></h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-10">
+        <div>
+          {{brewery.description}}
+        </div>
+      </div>
+      <div class="col-md-2">
+        <img src="{{brewery.images.icon}}" />
+      </div>
+    </div>
+  </div>
+</div>
