@@ -64,10 +64,10 @@ gulp.task('serve', ['watch'], function () {
     '.tmp'
   ], [
     '.tmp/{app,components}/**/*.css',
-    'src/assets/images/**/*',
-    'src/*.html',
-    'src/{app,components}/**/*.html',
-    'src/{app,components}/**/*.js'
+    'app/assets/images/**/*',
+    'app/*.html',
+    'app/{app,components}/**/*.html',
+    'app/{app,components}/**/*.js'
   ]);
 });
 
