@@ -9,6 +9,7 @@ var rename = require('gulp-rename');
 var browserSync = require('browser-sync');
 var util = require('util');
 var middleware = require('./gulp/proxy');
+var del = require('del');
 
 var config = {
   js: ['app/**/*.js', '!./app/bower_components','!./app/bower_components/**'],
@@ -20,6 +21,10 @@ var dist = {
 	images: 'images/',
 	fonts: 'fonts/'
 }
+
+gulp.task('clean', function() {
+  del(dist.path);
+})
 
 // Lint Task
 gulp.task('lint', function() {
