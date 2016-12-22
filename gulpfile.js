@@ -10,18 +10,22 @@ var browserSync = require('browser-sync');
 var util = require('util');
 var middleware = require('./gulp/proxy');
 
+var config = {
+  js: ['app/**/*.js', '!./app/bower_components','!./app/bower_components/**'],
+	images: './app/assets/images/*.*'
+};
 
 // Lint Task
 gulp.task('lint', function() {
   console.log('linting');
-    return gulp.src('app/*.js')
+    return gulp.src(config.js)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
-    return gulp.src('app/*.js')
+    return gulp.src(config.js)
         .pipe(concat('all.js'))
         .pipe(gulp.dest('dist'))
         .pipe(rename('all.min.js'))
