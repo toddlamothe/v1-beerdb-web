@@ -13,7 +13,9 @@ var del = require('del');
 
 var config = {
   js: ['app/**/*.js', '!./app/bower_components','!./app/bower_components/**'],
-	images: './app/assets/images/*.*'
+	images: './app/assets/images/*.*',
+  html: './app/**/*.html',
+  temp: './.tmp'
 };
 
 var dist = {
@@ -22,10 +24,6 @@ var dist = {
 	fonts: 'fonts/'
 }
 
-gulp.task('clean', function() {
-  del(dist.path);
-})
-
 // Lint Task
 gulp.task('lint', function() {
   console.log('linting');
@@ -33,6 +31,27 @@ gulp.task('lint', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
+
+gulp.task('copy-images', function(){
+  return gulp.src([config.images])
+    .pipe(gulp.dest(dist.path + dist.images));
+});
+
+//Helper Tasks
+gulp.task('clean', function() {
+  del(dist.path);
+})
+
+gulp.task('clean-images', ['clean-images'], function(){
+  del(dist.path + dist.images);
+});
+
+
+
+
+
+
+
 
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
