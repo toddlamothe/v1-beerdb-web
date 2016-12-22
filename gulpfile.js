@@ -10,6 +10,9 @@ var browserSync = require('browser-sync');
 var util = require('util');
 var middleware = require('./gulp/proxy');
 var del = require('del');
+var minifyHtml = require('gulp-minify-html');
+var angularTemplatecache = require('gulp-angular-templatecache');
+var useref = require('gulp-useref');
 
 var config = {
   js: ['app/**/*.js', '!./app/bower_components','!./app/bower_components/**'],
@@ -37,9 +40,34 @@ gulp.task('copy-images', function(){
     .pipe(gulp.dest(dist.path + dist.images));
 });
 
+gulp.task('templatecache', function() {
+  return gulp.src(config.html)
+    .pipe(minifyHtml({empty: true}))
+    .pipe(angularTemplatecache(
+      'templates.js', {
+        module: 'BeerDbApp',
+        standAlone: false,
+        root: 'app/'
+      }
+    ))
+    .pipe(gulp.dest(config.temp));
+});
+
+gulp.task('useref', function(){
+  var assets = useref.assets();
+
+  return gulp.src('./app/index.html')
+    .pipe(assets)
+    .pipe(assets.restore())
+    .pipe(useref())
+    .pipe(gulp.dest('dist'));
+});
+
+
 //Helper Tasks
 gulp.task('clean', function() {
   del(dist.path);
+  del(config.temp);
 })
 
 gulp.task('clean-images', ['clean-images'], function(){

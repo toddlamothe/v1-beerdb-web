@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="app.css">
+  <!-- endbuild -->
 </head>
 <body ng-app="BeerDbApp">
   <!--[if lt IE 7]>
@@ -26,17 +28,20 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+  <!-- build:js js/vendor.js -->
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/spin.js/spin.js"></script>
   <script src="bower_components/angular-spinner/angular-spinner.js"></script>
-
+  <!-- endbuild -->
+  <!-- build:js js/scripts.js -->
   <script src="app.js"></script>
   <script src="services/configuration/configurationservice.js"></script>
   <script src="services/beerservice/beerservice.js"></script>
   <script src="components/search-cards/card-components.js"></script>
   <script src="components/beersearch/beersearch-component.js"></script>
   <script src="components/navbar/navbar-component.js"></script>
+  <!-- endbuild -->
 </body>
 </html>
