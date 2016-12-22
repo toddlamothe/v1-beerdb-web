@@ -15,6 +15,12 @@ var config = {
 	images: './app/assets/images/*.*'
 };
 
+var dist = {
+	path: 'dist/',
+	images: 'images/',
+	fonts: 'fonts/'
+}
+
 // Lint Task
 gulp.task('lint', function() {
   console.log('linting');
