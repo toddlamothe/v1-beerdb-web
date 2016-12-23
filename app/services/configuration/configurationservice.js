@@ -3,7 +3,7 @@
 
    angular.module('ConfigurationService', [])
     .constant('APP_CONFIG', (function configurationBuilder() {
-      var _environment = "azure";
+      var _environment = "docker";
       var _environments = {
           test: {
             config: {
@@ -23,6 +23,11 @@
           azure: {
             config: {
               breweryDbBaseUrl: "http://beerdbapi.azurewebsites.net/api/beerdb/"
+            }
+          },
+          docker: {
+            config: {
+              breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com:8888/api/beerdb/"
             }
           }
         };
