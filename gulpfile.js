@@ -24,11 +24,11 @@ var config = {
 
 var dist = {
 	path: 'dist/',
-	images: 'images/',
+	images: 'assets/images/',
 	fonts: 'fonts/'
 }
 
-gulp.task('build', ['minifyjs', 'copy-images'], function(){
+gulp.task('build', ['copy-images', 'minifyjs'], function(){
   del(config.temp);
 });
 
@@ -53,6 +53,15 @@ gulp.task('minifyjs', ['useref', 'templatecache'], function(){
     .pipe(gulp.dest('dist/js/'));
 });
 
+gulp.task('useref', function(){
+  var assets = useref.assets();
+
+  return gulp.src('./app/**/*.html')
+    .pipe(assets)
+    .pipe(assets.restore())
+    .pipe(useref())
+    .pipe(gulp.dest('dist'));
+});
 
 gulp.task('templatecache', function() {
   return gulp.src(config.html)
@@ -67,16 +76,6 @@ gulp.task('templatecache', function() {
     .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('useref', function(){
-  var assets = useref.assets();
-
-  return gulp.src('./app/index.html')
-    .pipe(assets)
-    .pipe(assets.restore())
-    .pipe(useref())
-    .pipe(gulp.dest('dist'));
-});
-
 //Helper Tasks
 gulp.task('clean', function() {
   del(dist.path);
@@ -85,4 +84,50 @@ gulp.task('clean', function() {
 
 gulp.task('clean-images', function(){
   del(dist.path + dist.images);
+});
+
+// Watch Files For Changes
+gulp.task('watch', function() {
+    gulp.watch('app/*.js', ['lint', 'scripts']);
+});
+
+function browserSyncInit(baseDir, files, browser) {
+  browser = browser === undefined ? 'default' : browser;
+
+  var routes = null;
+  if(baseDir === 'app' || (util.isArray(baseDir) && baseDir.indexOf('app') !== -1)) {
+    routes = {
+      // Should be '/bower_components': '../bower_components'
+      // Waiting for https://github.com/shakyShane/browser-sync/issues/308
+      '/bower_components': 'bower_components'
+    };
+  }
+
+  browserSync.instance = browserSync.init(files, {
+    startPath: '/index.html',
+    server: {
+      baseDir: baseDir,
+      middleware: middleware,
+      routes: routes
+    },
+    browser: browser
+  });
+
+};
+
+gulp.task('serve:dist', ['build'], function () {
+  browserSyncInit('dist');
+});
+
+gulp.task('serve', ['watch'], function () {
+  browserSyncInit([
+    'app',
+    '.tmp'
+  ], [
+    '.tmp/{app,components}/**/*.css',
+    'app/assets/images/**/*',
+    'app/*.html',
+    'app/{app,components}/**/*.html',
+    'app/{app,components}/**/*.js'
+  ]);
 });
