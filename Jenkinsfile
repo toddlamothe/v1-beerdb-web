@@ -6,9 +6,9 @@ This is different than the API project, which is first uploaded to the image and
 
 node {
     stage('Build') {
-        bat 'cd c:/code/beerdb-web'
-        bat 'node node_modules/gulp/bin/gulp.js clean'
-        bat 'node node_modules/gulp/bin/gulp.js build'
+        // bat 'cd c:/code/beerdb-web'
+        bat 'node ./node_modules/gulp/bin/gulp.js clean'
+        bat 'node ./node_modules/gulp/bin/gulp.js build'
     }
     stage('Test') {
         // bat 'gulp test'
