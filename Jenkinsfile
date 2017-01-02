@@ -6,8 +6,8 @@ This is different than the API project, which is first uploaded to the image and
 
 node {
     stage('Build') {
-        bat 'gulp clean'
-        bat 'gulp build'
+        bat 'node node_modules\gulp\bin\gulp.js clean'
+        bat 'node node_modules\gulp\bin\gulp.js build'
     }
     stage('Test') {
         // bat 'gulp test'
