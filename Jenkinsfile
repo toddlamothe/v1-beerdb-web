@@ -29,6 +29,6 @@ node {
             echo err
         }
 
-        bat 'docker run -d -p 8888:80 toddlamothe/beerdb-web'
+        bat 'docker run -d -p 8002:80 toddlamothe/beerdb-web'
     }
 }
