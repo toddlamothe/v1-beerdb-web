@@ -8,8 +8,10 @@ node {
     stage('Build') {
 
         dir('c:\\code\\beerdb-web\\') {
-        bat 'gulp clean'
-        bat 'gulp buld'
+            node node_modules\gulp\bin\gulp.js clean
+            node node_modules\gulp\bin\gulp.js build
+            // bat 'gulp clean'
+            // bat 'gulp buld'
         }        
         //bat 'node c:/code/beerdb-web/node_modules/gulp/bin/gulp.js clean'
         //bat 'node c:/code/beerdb-web/node_modules/gulp/bin/gulp.js build'
