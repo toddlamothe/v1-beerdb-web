@@ -10,17 +10,15 @@ node {
         dir('c:\\code\\beerdb-web\\') {
             bat 'node node_modules\\gulp\\bin\\gulp.js clean'
             bat 'node node_modules\\gulp\\bin\\gulp.js build'
-            // bat 'gulp clean'
-            // bat 'gulp buld'
         }        
-        //bat 'node c:/code/beerdb-web/node_modules/gulp/bin/gulp.js clean'
-        //bat 'node c:/code/beerdb-web/node_modules/gulp/bin/gulp.js build'
     }
     stage('Test') {
         // bat 'gulp test'
     }
     stage('Containerize') {
-        bat 'docker build -t toddlamothe/beerdb-web -f Dockerfile.dist .'
+        dir('c:\\code\\beerdb-web\\') {
+            bat 'docker build -t toddlamothe/beerdb-web -f Dockerfile.dist .'
+        }                
     }
     stage('Deploy') {
         // Attempt to stop any instances of the running container before building.
