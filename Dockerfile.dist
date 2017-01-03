@@ -1,7 +1,11 @@
-FROM        iojs
-MAINTAINER  Todd LaMothe
-RUN         md c:\build
-WORKDIR     c:/build
-COPY        dist/* c:/build
-EXPOSE      8888
-ENTRYPOINT ["gulp", "serve:dist"]
+# TP5 for technology preview (will not be needed when we go GA)
+# FROM microsoft/iis
+FROM microsoft/iis
+
+# Copy files (temporary work folder)
+RUN md c:\build
+WORKDIR c:/build
+COPY dist/* c:/build
+
+# Restore packages, build, copy
+RUN xcopy c:\build\* c:\inetpub\wwwroot /s
