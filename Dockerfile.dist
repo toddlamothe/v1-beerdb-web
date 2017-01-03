@@ -6,6 +6,7 @@ FROM microsoft/iis
 RUN md c:\build
 WORKDIR c:/build
 COPY dist/* c:/build/
+EXPOSE      80
 
 # Restore packages, build, copy
 RUN xcopy c:\build\* c:\inetpub\wwwroot /s
