@@ -9,4 +9,4 @@ COPY dist/* c:/build/
 EXPOSE      80
 
 # Restore packages, build, copy
-RUN xcopy c:\build\* c:\inetpub\wwwroot /s
+RUN xcopy c:\build\* c:\inetpub\wwwroot /s/e
