@@ -27,10 +27,10 @@
           },
           docker: {
             config: {
-              breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com/api/beerdb/"
+              breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com:8888/api/beerdb/"
             }
           }
-        };        
+        };
 
       var config = {
         testval: "test"
