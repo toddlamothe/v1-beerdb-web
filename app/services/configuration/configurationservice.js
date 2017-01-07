@@ -4,6 +4,7 @@
    angular.module('ConfigurationService', [])
     .constant('APP_CONFIG', (function configurationBuilder() {
       var _environment = "docker";
+      var _buildTrigger = 1;
       var _environments = {
           test: {
             config: {
