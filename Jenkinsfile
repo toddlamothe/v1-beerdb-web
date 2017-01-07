@@ -6,6 +6,10 @@ This is different than the API project, which is first uploaded to the image and
 
 node {
     stage('Build') {
+        echo 'Stopping running web containers...'
+        dir('c:\\code\beerdb-orchestration\\') {
+            bat 'docker-compose stop web'
+        }
 
         dir('c:\\code\\beerdb-web\\') {
             bat 'node node_modules\\gulp\\bin\\gulp.js clean'
@@ -29,6 +33,10 @@ node {
             echo err
         }
 
-        bat 'docker run -d -p 8002:80 toddlamothe/beerdb-web'
+        // bat 'docker run -d -p 8002:80 toddlamothe/beerdb-web'
+        echo 'Starting new web container...'
+        dir('c:\\code\beerdb-orchestration\\') {
+            bat 'docker-compose start web'
+        }
     }
 }
