@@ -35,7 +35,7 @@ node {
 
         // bat 'docker run -d -p 8002:80 toddlamothe/beerdb-web'
         echo 'Starting new web container...'
-        dir('c:\\code\beerdb-orchestration\\') {
+        dir('c:\\code\\beerdb-orchestration\\') {
             bat 'docker-compose start web'
         }
     }
