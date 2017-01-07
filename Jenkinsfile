@@ -7,7 +7,7 @@ This is different than the API project, which is first uploaded to the image and
 node {
     stage('Build') {
         echo 'Stopping running web containers...'
-        dir('c:\\code\beerdb-orchestration\\') {
+        dir('c:\\code\\beerdb-orchestration\\') {
             bat 'docker-compose stop web'
         }
 
@@ -28,7 +28,7 @@ node {
         // Attempt to stop any instances of the running container before building.
         try {
             // bat 'docker rm $(docker stop $(docker ps -a -q --filter ancestor=toddlamothe/beerdb-web --format="{{.ID}}"))'
-        }
+        }   
         catch(err) {
             echo err
         }
