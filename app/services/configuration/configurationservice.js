@@ -4,7 +4,8 @@
    angular.module('ConfigurationService', [])
     .constant('APP_CONFIG', (function configurationBuilder() {
       var _environment = "docker";
-      var _buildTrigger = 1;
+      var _version = 0.1;
+      var _build = 1;
       var _environments = {
           test: {
             config: {
@@ -39,6 +40,10 @@
 
       config.get = function(property) {
         return _environments[_environment].config[property];
+      };
+
+      config.appVersion = function() {
+        return _version + "." + _build;
       };
 
       return config;

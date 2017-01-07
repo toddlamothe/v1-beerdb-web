@@ -21,6 +21,10 @@
           return $http.get(url);
         };
 
+        function appVersion() {
+          var appVersion = APP_CONFIG.appVersion();
+        };
+
         // Return functions as individual service calls
         return {
           getBrewery : getBrewery,
