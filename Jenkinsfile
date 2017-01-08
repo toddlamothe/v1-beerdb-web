@@ -12,6 +12,7 @@ node {
         }
 
         dir('c:\\code\\beerdb-web\\') {
+            bat 'git pull'
             bat 'node node_modules\\gulp\\bin\\gulp.js clean'
             bat 'node node_modules\\gulp\\bin\\gulp.js build'
         }        
