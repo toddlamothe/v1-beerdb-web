@@ -5,7 +5,7 @@
     .constant('APP_CONFIG', (function configurationBuilder() {
       var _environment = "docker";
       var _version = 0.1;
-      var _build = 4;
+      var _build = 5;
       var _environments = {
           test: {
             config: {
