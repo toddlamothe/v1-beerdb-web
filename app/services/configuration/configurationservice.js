@@ -3,7 +3,7 @@
 
    angular.module('ConfigurationService', [])
     .constant('APP_CONFIG', (function configurationBuilder() {
-      var _environment = "docker";
+      var _environment = "techfest";
       var _version = 0.1;
       var _build = 5;
       var _environments = {
@@ -30,6 +30,11 @@
           docker: {
             config: {
               breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com:8888/api/beerdb/"
+            }
+          },
+          techfest: {
+            config: {
+              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/"
             }
           }
         };
