@@ -7,11 +7,14 @@
           controller: ['$scope', 'beerService', 'NgMap', function($scope, beerService, NgMap) {
             console.log('[beerSearch controller]');
             $scope.sidePanelActive = false;
-
             $scope.spinnerActive = false;
-
             $scope.brewerySearchResults = {};
             $scope.beerSearchResults = {};
+
+            // Register callback for map toggle service event
+            beerService.onMapToggle(function() {
+              $scope.toggleMap();
+            });
 
             $scope.brewerySearchParams = {
               name: '',
