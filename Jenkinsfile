@@ -16,7 +16,7 @@ node {
             bat 'docker build -t toddlamothe/beerdb-web -f Dockerfile.dist .'
         }
     }
-    stage('Deploy' to Docker Hub) {
+    stage('Deploy to Docker Hub') {
       bat 'docker push toddlamothe/beerdb-web'
     }
 }
