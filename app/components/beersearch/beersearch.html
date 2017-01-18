@@ -1,4 +1,5 @@
-<div class="container-fluid">
+
+<div id="beerSearch" class="container-fluid">
 
   <uib-tabset active="active">
     <uib-tab index="0" heading="Find Breweries">
@@ -173,4 +174,8 @@
 
   </div>
 </div>
+<div class="col-md-4">
+  <button id="showMap" name="showMap" class="btn btn-primary" ng-click="toggleMap()">Toggle Map</button> <!-- glyphicon glyphicon-search -->
+</div>
+
 <span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>

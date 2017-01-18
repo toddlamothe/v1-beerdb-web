@@ -6,7 +6,8 @@
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', function($scope, beerService) {
             console.log('[beerSearch controller]');
-            var beerSearchController = this;
+            $scope.sidePanelActive = true;
+
             $scope.spinnerActive = false;
 
             $scope.brewerySearchResults = {};
@@ -21,7 +22,9 @@
               name: ''
             };
 
-            $scope.showDetails = false;
+            $scope.toggleMap = function() {
+                $scope.sidePanelActive = !$scope.sidePanelActive;
+            }
 
             $scope.brewerySearch = function() {
               console.log('  brewerySearch');

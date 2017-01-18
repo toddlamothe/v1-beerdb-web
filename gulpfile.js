@@ -88,7 +88,7 @@ gulp.task('clean-images', function(){
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('app/*.js', ['lint', 'scripts']);
+    gulp.watch('app/*.js', ['lint']);
 });
 
 function browserSyncInit(baseDir, files, browser) {
