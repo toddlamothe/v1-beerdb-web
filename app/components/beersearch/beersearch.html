@@ -1,181 +1,184 @@
+  <button id="showMap" name="showMap" class="btn btn-primary" ng-click="toggleMap()">Toggle Map</button> <!-- glyphicon glyphicon-search -->
 
-<div id="beerSearch" class="container-fluid">
+<div class="container-fluid">
+  <div class="row">
+    <div style="bgcolor:blue" ng-class="{'col-md-8': sidePanelActive == true, 'col-md-12': sidePanelActive == false}">
+      <uib-tabset active="active">
+        <uib-tab index="0" heading="Find Breweries">
 
-  <uib-tabset active="active">
-    <uib-tab index="0" heading="Find Breweries">
+          <form class="form-horizontal">
+            <fieldset>
+              <!-- Form Name -->
+              <div>&nbsp;</div>
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="col-md-4 control-label" for="textinput">Name</label>
+                  <div class="col-md-6">
+                    <input ng-model="brewerySearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
+                  </div>
+                </div>
+                <div class="form-group col-md-6"></div>
+              </div>
 
-      <form class="form-horizontal">
-        <fieldset>
-          <!-- Form Name -->
-          <div>&nbsp;</div>
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label class="col-md-4 control-label" for="textinput">Name</label>
-              <div class="col-md-6">
-                <input ng-model="brewerySearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
+              <!-- Filters -->
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
+                  <div class="col-md-4">
+                    <div class="checkbox">
+                      <label for="BreweryFilters-0">
+                        <input type="checkbox" name="BreweryFilters" id="BreweryFilters-0" value="organic">
+                        Organic Only
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Button -->
+              <div class="row">
+                <div class="form-group col-md-2">
+                  <label class="col-md-4 control-label" for="brewerySearch"></label>
+                  <div class="col-md-4">
+                    <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="brewerySearch()">Search</button> <!-- glyphicon glyphicon-search -->
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+        </uib-tab>
+        <uib-tab index="1" heading="Find Beers">
+
+          <form class="form-horizontal">
+          <fieldset>
+            <div>&nbsp;</div>
+            <!-- Text input-->
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class="col-md-4 control-label" for="textinput">Name</label>
+                <div class="col-md-6">
+                  <input ng-model="beerSearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter beer name" class="form-control input-md">
+                </div>
+              </div>
+              <div class="form-group col-md-8">
+
               </div>
             </div>
-            <div class="form-group col-md-8">
 
-            </div>
-          </div>
-
-          <!-- Filters -->
-          <div class="row">
-            <div class="form-group col-md-4">
-              <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
+            <!-- ABV -->
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class="col-md-4 control-label" for="abv">ABV greater than</label>
+                <div class="col-md-4">
+                  <select id="abv" name="abv" class="form-control">
+                    <option value="3">3%</option>
+                    <option value="4">4%</option>
+                    <option value="5">5%</option>
+                    <option value="6">6%</option>
+                    <option value="7">7%</option>
+                    <option value="8">8%</option>
+                    <option value="9">9%</option>
+                    <option value="10">10%</option>
+                  </select>
+                </div>
+              </div>
+              <!-- ABV -->
+              <div class="form-group col-md-4">
+                <label class="col-md-4 control-label" for="abv">ABV less than</label>
+                <div class="col-md-4">
+                  <select id="abv" name="abv" class="form-control">
+                    <option value="3">3%</option>
+                    <option value="4">4%</option>
+                    <option value="5">5%</option>
+                    <option value="6">6%</option>
+                    <option value="7">7%</option>
+                    <option value="8">8%</option>
+                    <option value="9">9%</option>
+                    <option value="10">10%</option>
+                  </select>
+                </div>
+              </div>
               <div class="col-md-4">
-                <div class="checkbox">
-                  <label for="BreweryFilters-0">
-                    <input type="checkbox" name="BreweryFilters" id="BreweryFilters-0" value="organic">
-                    Organic Only
-                  </label>
-              	</div>
+
               </div>
-            </div>
           </div>
-          <!-- Button -->
-          <div class="row">
-            <div class="form-group col-md-2">
-              <label class="col-md-4 control-label" for="brewerySearch"></label>
+
+            <!-- IBU -->
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class="col-md-4 control-label" for="abv">IBU greater than</label>
+                <div class="col-md-4">
+                  <select id="abv" name="abv" class="form-control">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                  </select>
+                </div>
+              </div>
+              <!-- IBU -->
+              <div class="form-group col-md-4">
+                <label class="col-md-4 control-label" for="abv">IBU less than</label>
+                <div class="col-md-4">
+                  <select id="abv" name="abv" class="form-control">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                  </select>
+                </div>
+              </div>
+
               <div class="col-md-4">
-                <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="brewerySearch()">Search</button> <!-- glyphicon glyphicon-search -->
+
               </div>
             </div>
-          </div>
-        </fieldset>
-      </form>
 
-    </uib-tab>
-    <uib-tab index="1" heading="Find Beers">
-
-      <form class="form-horizontal">
-      <fieldset>
-        <div>&nbsp;</div>
-        <!-- Text input-->
-        <div class="row">
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="textinput">Name</label>
-            <div class="col-md-6">
-              <input ng-model="beerSearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter beer name" class="form-control input-md">
+            <!-- Button -->
+            <div class="row">
+              <div class="form-group col-md-2">
+                <label class="col-md-4 control-label" for="brewerySearch"></label>
+                <div class="col-md-4">
+                  <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="beerSearch()">Search</button> <!-- glyphicon glyphicon-search -->
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="form-group col-md-8">
 
-          </div>
+          </fieldset>
+          </form>
+
+        </uib-tab>
+      </uib-tabset>
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <legend>Search Results</legend>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"  ng-repeat="brewery in brewerySearchResults">
+            <brewery-card brewery="{{brewery}}"></brewery-card>
         </div>
 
-        <!-- ABV -->
-        <div class="row">
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="abv">ABV greater than</label>
-            <div class="col-md-4">
-              <select id="abv" name="abv" class="form-control">
-                <option value="3">3%</option>
-                <option value="4">4%</option>
-                <option value="5">5%</option>
-                <option value="6">6%</option>
-                <option value="7">7%</option>
-                <option value="8">8%</option>
-                <option value="9">9%</option>
-                <option value="10">10%</option>
-              </select>
-            </div>
-          </div>
-          <!-- ABV -->
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="abv">ABV less than</label>
-            <div class="col-md-4">
-              <select id="abv" name="abv" class="form-control">
-                <option value="3">3%</option>
-                <option value="4">4%</option>
-                <option value="5">5%</option>
-                <option value="6">6%</option>
-                <option value="7">7%</option>
-                <option value="8">8%</option>
-                <option value="9">9%</option>
-                <option value="10">10%</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-4">
+        <div class="col-md-4" ng-repeat="beer in beerSearchResults">
+            <beer-card beer="{{beer}}"></beer-card>
+        </div>
 
-          </div>
       </div>
 
-        <!-- IBU -->
-        <div class="row">
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="abv">IBU greater than</label>
-            <div class="col-md-4">
-              <select id="abv" name="abv" class="form-control">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-                <option value="60">60</option>
-                <option value="70">70</option>
-                <option value="80">80</option>
-              </select>
-            </div>
-          </div>
-          <!-- IBU -->
-          <div class="form-group col-md-4">
-            <label class="col-md-4 control-label" for="abv">IBU less than</label>
-            <div class="col-md-4">
-              <select id="abv" name="abv" class="form-control">
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-                <option value="60">60</option>
-                <option value="70">70</option>
-                <option value="80">80</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-
-          </div>
-        </div>
-
-        <!-- Button -->
-        <div class="row">
-          <div class="form-group col-md-2">
-            <label class="col-md-4 control-label" for="brewerySearch"></label>
-            <div class="col-md-4">
-              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="beerSearch()">Search</button> <!-- glyphicon glyphicon-search -->
-            </div>
-          </div>
-        </div>
-
-      </fieldset>
-      </form>
-
-    </uib-tab>
-  </uib-tabset>
-  <hr />
-  <div class="row">
-    <div class="col-md-12">
-      <legend>Search Results</legend>
+    </div>
+    <div class="col-md-4" ng-if="sidePanelActive">
+      here is a map!
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4"  ng-repeat="brewery in brewerySearchResults">
-        <brewery-card brewery="{{brewery}}"></brewery-card>
-    </div>
-
-    <div class="col-md-4" ng-repeat="beer in beerSearchResults">
-        <beer-card beer="{{beer}}"></beer-card>
-    </div>
-
-  </div>
-</div>
-<div class="col-md-4">
-  <button id="showMap" name="showMap" class="btn btn-primary" ng-click="toggleMap()">Toggle Map</button> <!-- glyphicon glyphicon-search -->
 </div>
 
 <span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>
