@@ -4,9 +4,9 @@
   angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards'])
     .component("beerSearch", {
           templateUrl: "components/beersearch/beersearch.html",
-          controller: ['$scope', 'beerService', function($scope, beerService) {
+          controller: ['$scope', 'beerService', 'NgMap', function($scope, beerService, NgMap) {
             console.log('[beerSearch controller]');
-            $scope.sidePanelActive = true;
+            $scope.sidePanelActive = false;
 
             $scope.spinnerActive = false;
 

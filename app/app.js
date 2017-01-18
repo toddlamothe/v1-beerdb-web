@@ -8,7 +8,8 @@
     'BeerdbApp.navbar',
     'ConfigurationService',
     'BeerDbApp.BeerService',
-    'angularSpinner'
+    'angularSpinner',
+    'ngMap'
   ]);
 
 }());
