@@ -6,7 +6,7 @@
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', 'NgMap', function($scope, beerService, NgMap) {
             console.log('[beerSearch controller]');
-            $scope.sidePanelActive = false;
+            $scope.sidePanelActive = true;
             $scope.spinnerActive = false;
             $scope.brewerySearchResults = {};
             $scope.beerSearchResults = {};
