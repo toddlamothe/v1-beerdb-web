@@ -6,6 +6,7 @@
     'BeerdbApp.beerSearch',
     'BeerdbApp.searchCards',
     'BeerdbApp.navbar',
+    'BeerdbApp.beerMap',
     'ConfigurationService',
     'BeerDbApp.BeerService',
     'angularSpinner',

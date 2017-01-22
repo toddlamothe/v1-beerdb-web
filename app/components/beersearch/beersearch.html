@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <div style="bgcolor:blue" ng-class="{'col-md-8': sidePanelActive == true, 'col-md-12': sidePanelActive == false}">
+    <div id="left" ng-class="{'col-md-4': sidePanelActive == true, 'col-md-12': sidePanelActive == false}">
       <uib-tabset active="active">
         <uib-tab index="0" heading="Find Breweries">
 
@@ -9,7 +9,7 @@
               <!-- Form Name -->
               <div>&nbsp;</div>
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label class="col-md-4 control-label" for="textinput">Name</label>
                   <div class="col-md-6">
                     <input ng-model="brewerySearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
@@ -20,7 +20,7 @@
 
               <!-- Filters -->
               <div class="row">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
                   <div class="col-md-4">
                     <div class="checkbox">
@@ -52,20 +52,17 @@
             <div>&nbsp;</div>
             <!-- Text input-->
             <div class="row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label class="col-md-4 control-label" for="textinput">Name</label>
                 <div class="col-md-6">
                   <input ng-model="beerSearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter beer name" class="form-control input-md">
                 </div>
               </div>
-              <div class="form-group col-md-8">
-
-              </div>
             </div>
 
             <!-- ABV -->
             <div class="row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label class="col-md-4 control-label" for="abv">ABV greater than</label>
                 <div class="col-md-4">
                   <select id="abv" name="abv" class="form-control">
@@ -81,7 +78,7 @@
                 </div>
               </div>
               <!-- ABV -->
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label class="col-md-4 control-label" for="abv">ABV less than</label>
                 <div class="col-md-4">
                   <select id="abv" name="abv" class="form-control">
@@ -103,7 +100,7 @@
 
             <!-- IBU -->
             <div class="row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label class="col-md-4 control-label" for="abv">IBU greater than</label>
                 <div class="col-md-4">
                   <select id="abv" name="abv" class="form-control">
@@ -119,7 +116,7 @@
                 </div>
               </div>
               <!-- IBU -->
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-12">
                 <label class="col-md-4 control-label" for="abv">IBU less than</label>
                 <div class="col-md-4">
                   <select id="abv" name="abv" class="form-control">
@@ -162,27 +159,20 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6"  ng-repeat="brewery in brewerySearchResults">
+        <div class="col-md-12"  ng-repeat="brewery in brewerySearchResults">
             <brewery-card brewery="{{brewery}}"></brewery-card>
         </div>
-
-        <div class="col-md-6" ng-repeat="beer in beerSearchResults">
+        <div class="col-md-12" ng-repeat="beer in beerSearchResults">
             <beer-card beer="{{beer}}"></beer-card>
         </div>
-
       </div>
-
     </div>
-    <div class="col-md-4 well container-fluid " ng-if="sidePanelActive">
+    <div id="right" class="col-md-8 container-fluid " ng-if="sidePanelActive">
       <div class="row">
         <div class="col-md-12">
-          <button type="button" class="btn btn-default pull-right" ng-click="toggleMap()">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="col-md-12">
           <divmap-lazy-load="https://maps.google.com/maps/api/js">
-            <ng-map style="width:100%; height:600px; float:left" center="43.9,-72.9" zoom="7">
+          <!-- VT lat lon: 43.9,-72.9 -->
+            <ng-map style="width:100%; height:600px; float:left" center="39.5, -98.35" zoom="4">
 
               <custom-marker ng-repeat="p in locations track by $index"
                 id="custom-marker-{{$index}}"
@@ -194,7 +184,6 @@
               </custom-marker>
 
             </ng-map>
-          </div>
         </div>
       </div>
     </div>

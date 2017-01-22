@@ -1,12 +1,25 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3>{{brewery.name}} <small ng-if="brewery.established">({{brewery.established}})</small>
-      <button type="button" class="btn btn-default pull-right" ng-click="toggleMap()">
-        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-      </button>
-    </h3>
+
+    <div class="row">
+      <div class="col-md-9">
+        <h4>{{brewery.name}}
+          <!-- <button type="button" class="btn btn-default pull-right" ng-click="toggleMap()">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+          </button> -->
+        </h4>
+      </div>
+      <div class="col-md-3">
+        <img src="{{brewery.images.icon}}" />
+      </div>
+    </div>
   </div>
   <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+        <small ng-if="brewery.established">Established ({{brewery.established}})</small>
+      </div>
+    </div>
     <div class="row">
       <div class="col-md-10">
         <div>
@@ -14,7 +27,7 @@
         </div>
       </div>
       <div class="col-md-2">
-        <img src="{{brewery.images.icon}}" />
+
       </div>
     </div>
   </div>
