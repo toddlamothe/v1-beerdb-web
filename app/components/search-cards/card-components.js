@@ -8,7 +8,7 @@
       bindings: {
         beer: '@'
       },
-      controller: ['$scope', '$log', function($scope, $log) {
+      controller: ['$scope', '$log', 'beerService', function($scope, $log, beerService) {
         $log.info('[beerCard]');
         $scope.beer = JSON.parse(this.beer);
       }]
@@ -19,9 +19,13 @@
         bindings: {
             brewery: '@'
         },
-        controller: ['$scope', '$log', function($scope, $log) {
+        controller: ['$scope', '$log', 'beerService', function($scope, $log, beerService) {
           $log.info('[breweryCard]');
           $scope.brewery = JSON.parse(this.brewery);
+
+          $scope.toggleMap = function() {
+              beerService.toggleMap();
+          }
         }]
       })
 

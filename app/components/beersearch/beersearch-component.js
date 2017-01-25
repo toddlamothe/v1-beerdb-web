@@ -1,17 +1,16 @@
 (function () {
   'use strict';
 
-  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards'])
+  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards', 'BeerdbApp.beerMap'])
     .component("beerSearch", {
           templateUrl: "components/beersearch/beersearch.html",
-          controller: ['$scope', 'beerService', function($scope, beerService) {
+          controller: ['$scope', 'beerService', 'NgMap', '$log', function($scope, beerService, NgMap, $log) {
             console.log('[beerSearch controller]');
             $scope.sidePanelActive = true;
-
             $scope.spinnerActive = false;
-
             $scope.brewerySearchResults = {};
             $scope.beerSearchResults = {};
+            $scope.locations = [];
 
             $scope.brewerySearchParams = {
               name: '',
@@ -34,6 +33,8 @@
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
+                  $scope.buildBreweryLocationList();
+                  beerService.refreshMap($scope.locations);
                   $scope.spinner(false);
                 })
                 .error(function() {
@@ -68,6 +69,33 @@
               $scope.brewerySearchResults = {};
             };
 
+            $scope.buildBreweryLocationList = function() {
+              // Clear existing locations list
+              $scope.locations = [];
+              // Iterate through the list of brewery search results and extract a list of locations
+              // $scope.locations
+              var breweries = $scope.brewerySearchResults;
+              var brewery;
+              for (var b = 0; b < breweries.length; b++) {
+                brewery = breweries[b];
+                // Iterate through the list of locations for this brewery and append
+                for (var l=0; l < brewery.locations.length; l++) {
+                  if(brewery.locations[l].isPrimary == "Y") {
+                    var location = {};
+                    location.pos = [brewery.locations[l].latitude, brewery.locations[l].longitude];
+                    location.name = brewery.locations[l].name;
+                    if (brewery.images && brewery.images.icon) {
+                      location.image = brewery.images.icon;
+                    }
+                    else {
+                      location.image = 'assets/images/beer-small.png';
+                    }
+                    $scope.locations.push(location);
+                  }
+                };
+                //$log.info('$scope.locations: ', $scope.locations);
+              };
+            };
           }]
     });
 }());
