@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards'])
+  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards', 'BeerdbApp.beerMap'])
     .component("beerSearch", {
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', 'NgMap', '$log', function($scope, beerService, NgMap, $log) {
@@ -43,10 +43,9 @@
 
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
-                  $log.info("Search results:");
-                  $log.info(data);
                   $scope.brewerySearchResults = data.data;
                   $scope.buildBreweryLocationList();
+                  beerService.refreshMap($scope.locations);
                   $scope.spinner(false);
                 })
                 .error(function() {
@@ -105,7 +104,7 @@
                     $scope.locations.push(location);
                   }
                 };
-                $log.info('$scope.locations: ', $scope.locations);
+                //$log.info('$scope.locations: ', $scope.locations);
               };
             };
           }]

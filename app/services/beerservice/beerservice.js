@@ -5,7 +5,8 @@
   angular.module('BeerDbApp.BeerService', [])
     .service('beerService', ['$log', '$http', 'APP_CONFIG', function($log, $http, APP_CONFIG) {
         $log.info('[beerService]');
-        var callbacks = [];
+        var mapRefreshCallbacks = [];
+        var mapToggleCallbacks  =[];
 
         // Define service functions
 
@@ -27,19 +28,30 @@
         };
 
         function toggleMap() {
-          for (var i = 0; i < callbacks.length; i++)
-            callbacks[i]();
+          for (var i = 0; i < mapToggleCallbacks.length; i++)
+            mapToggleCallbacks[i]();
         }
 
         //register listener
         var onMapToggle = function(callback) {
-          callbacks.push(callback);
+          mapToggleCallbacks.push(callback);
+        }
+
+        var onMapRefresh = function(callback) {
+          mapRefreshCallbacks.push(callback);
+        }
+
+        var refreshMap = function(locations) {
+          for (var i = 0; i < mapRefreshCallbacks.length; i++)
+            mapRefreshCallbacks[i](locations);
         }
 
         // Return functions as individual service calls
         return {
           onMapToggle : onMapToggle,
           toggleMap : toggleMap,
+          onMapRefresh : onMapRefresh,
+          refreshMap : refreshMap,
           getBrewery : getBrewery,
           getBeers : getBeers
         };

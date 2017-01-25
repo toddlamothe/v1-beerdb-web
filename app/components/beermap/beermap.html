@@ -1,0 +1,12 @@
+<ng-map style="width:100%; height:600px; float:left" center="39.5, -98.35" zoom="4">
+locations.length: {{locations.length}}
+  <custom-marker ng-repeat="p in locations track by $index"
+    id="custom-marker-{{$index}}"
+    on-click="vm.map.showInfoWindow('foo', 'custom-marker-'+$index)"
+    position="{{p.pos}}">
+    <div>
+      <img src="{{p.image}}"/>
+    </div>
+  </custom-marker>
+
+</ng-map>
