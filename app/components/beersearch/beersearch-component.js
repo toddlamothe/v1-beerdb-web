@@ -12,17 +12,6 @@
             $scope.beerSearchResults = {};
             $scope.locations = [];
 
-            $scope.positions = [
-              {pos:[43.11, -75.21],name:1}, {pos:[43.22, -75.10],name:2},
-              {pos:[43.33, -74.99],name:3}, {pos:[43.44, -74.88],name:4},
-              {pos:[43.55, -74.77],name:5}, {pos:[43.66, -74.66],name:6}];
-
-
-            // Register callback for map toggle service event
-            beerService.onMapToggle(function() {
-              $scope.toggleMap();
-            });
-
             $scope.brewerySearchParams = {
               name: '',
               isOrganic: false

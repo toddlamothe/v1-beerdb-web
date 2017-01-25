@@ -6,9 +6,6 @@
     .service('beerService', ['$log', '$http', 'APP_CONFIG', function($log, $http, APP_CONFIG) {
         $log.info('[beerService]');
         var mapRefreshCallbacks = [];
-        var mapToggleCallbacks  =[];
-
-        // Define service functions
 
         function getBrewery(searchParams) {
           var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries?name=' + encodeURI(searchParams.name);
@@ -27,16 +24,6 @@
           var appVersion = APP_CONFIG.appVersion();
         };
 
-        function toggleMap() {
-          for (var i = 0; i < mapToggleCallbacks.length; i++)
-            mapToggleCallbacks[i]();
-        }
-
-        //register listener
-        var onMapToggle = function(callback) {
-          mapToggleCallbacks.push(callback);
-        }
-
         var onMapRefresh = function(callback) {
           mapRefreshCallbacks.push(callback);
         }
@@ -48,8 +35,6 @@
 
         // Return functions as individual service calls
         return {
-          onMapToggle : onMapToggle,
-          toggleMap : toggleMap,
           onMapRefresh : onMapRefresh,
           refreshMap : refreshMap,
           getBrewery : getBrewery,
