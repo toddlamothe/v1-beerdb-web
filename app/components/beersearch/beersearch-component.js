@@ -82,6 +82,7 @@
                 for (var l=0; l < brewery.locations.length; l++) {
                   if(brewery.locations[l].isPrimary == "Y") {
                     var location = {};
+                    location.id = brewery.id;
                     location.pos = [brewery.locations[l].latitude, brewery.locations[l].longitude];
                     location.name = brewery.locations[l].name;
                     if (brewery.images && brewery.images.icon) {

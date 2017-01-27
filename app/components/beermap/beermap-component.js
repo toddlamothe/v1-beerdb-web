@@ -17,10 +17,13 @@
         $scope.refreshMap = function(locations) {
           $log.info(' [refreshMap]');
           $scope.locations = locations;
-          if ($scope.locations && $scope.locations.length > 0) {
-            $scope.locations = $scope.locations;
-          };
+        };
+
+        $scope.onMarkerClicked = function(itemId) {
+          $log.info( ' Marker clicked!');
+          beerService.highlightBreweryCard(itemId);
         }
+
       }]
     })
 

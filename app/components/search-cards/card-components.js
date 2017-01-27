@@ -19,13 +19,18 @@
         bindings: {
             brewery: '@'
         },
-        controller: ['$scope', '$log', 'beerService', function($scope, $log, beerService) {
+        controller: ['$scope', '$log', 'beerService', '$anchorScroll', '$location', function($scope, $log, beerService, $anchorScroll, $location) {
           $log.info('[breweryCard]');
           $scope.brewery = JSON.parse(this.brewery);
 
-          $scope.toggleMap = function() {
-              beerService.toggleMap();
-          }
+          $scope.setFocus = function(elementId) {
+            $log.info("setting focus to 14 Star:");
+            $location.hash(elementId);
+            $anchorScroll();
+          };
+
+          beerService.onHighlightBreweryCard($scope.setFocus);
+
         }]
       })
 
