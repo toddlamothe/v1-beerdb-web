@@ -21,6 +21,9 @@
         },
         controller: ['$scope', '$log', 'beerService', '$anchorScroll', '$location', function($scope, $log, beerService, $anchorScroll, $location) {
           $log.info('[breweryCard]');
+          $scope.breweryDescriptionMin = 100;
+          $scope.breweryDescriptionMax = 10000;
+          $scope.charLimit = $scope.breweryDescriptionMin;
           $scope.brewery = JSON.parse(this.brewery);
 
           $scope.setFocus = function(elementId) {
@@ -30,6 +33,14 @@
           };
 
           beerService.onHighlightBreweryCard($scope.setFocus);
+
+          $scope.readMore = function() {
+            $scope.charLimit = $scope.breweryDescriptionMax;
+          }
+
+          $scope.readLess = function() {
+            $scope.charLimit = $scope.breweryDescriptionMin;
+          }
 
         }]
       })
