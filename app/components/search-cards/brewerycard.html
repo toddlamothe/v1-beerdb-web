@@ -17,15 +17,12 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <div>
           {{brewery.description | limitTo:charLimit}}
-          <div ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more pull-right">...more...</div>
-          <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right">...less...</div>
+          <div ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more pull-right"> more...</div>
+          <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right"> less...</div>
         </div>
-      </div>
-      <div class="col-md-2">
-
       </div>
     </div>
   </div>
