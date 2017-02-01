@@ -20,8 +20,8 @@
       <div class="col-md-12">
         <div>
           {{brewery.description | limitTo:charLimit}}
-          <div ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more pull-right"> more...</div>
-          <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right"> less...</div>
+          <font ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more">...more</font>
+          <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right">show less</div>
         </div>
       </div>
     </div>
