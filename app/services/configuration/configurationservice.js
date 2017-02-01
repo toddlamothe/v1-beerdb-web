@@ -5,7 +5,7 @@
     .constant('APP_CONFIG', (function configurationBuilder() {
       var _environment = "techfest";
       var _version = 0.1;
-      var _build = 11;
+      var _build = 12;
       var _environments = {
           test: {
             config: {
