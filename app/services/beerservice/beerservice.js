@@ -9,9 +9,33 @@
         var highlightBreweryCardCallbacks = [];
 
         function getBrewery(searchParams) {
-          var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries?name=' + encodeURI(searchParams.name);
+          //var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries?name=' + encodeURI(searchParams.name);
+          var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries?' + buildBrewerySearchQueryString(searchParams);
           $log.info('url = ', url);
           return $http.get(url);
+        };
+
+        function buildBrewerySearchQueryString(searchParams) {
+          var searchQueryString = '';
+          $log.info('search params: ', searchParams);
+          // Brewery Name
+          if (searchParams.name.length > 0) {
+            searchQueryString.length==0 ?  searchQueryString = "name=" + encodeURI(searchParams.name) : searchQueryString += "&name=" + encodeURI(searchParams.name);
+          }
+          // Country
+          if (searchParams.country.length > 0)
+            searchQueryString.length==0 ?  searchQueryString = "country=" + encodeURI(searchParams.country) : searchQueryString += "&country=" + encodeURI(searchParams.country);
+          // State
+          if (searchParams.state.length > 0)
+            searchQueryString.length==0 ?  searchQueryString = "state=" + encodeURI(searchParams.state) : searchQueryString += "&state=" + encodeURI(searchParams.state);
+          // City
+          if (searchParams.city.length > 0)
+            searchQueryString.length==0 ?  searchQueryString = "city=" + encodeURI(searchParams.city) : searchQueryString += "&city=" + encodeURI(searchParams.city);
+
+          $log.info("brewery query string: ");
+          $log.info(searchQueryString);
+
+          return searchQueryString;
         };
 
         function getBeers(searchParams) {

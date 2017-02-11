@@ -14,7 +14,10 @@
 
             $scope.brewerySearchParams = {
               name: '',
-              isOrganic: false
+              isOrganic: false,
+              country: '',
+              state: '',
+              city: ''
             };
 
             $scope.beerSearchParams = {
@@ -73,7 +76,6 @@
               // Clear existing locations list
               $scope.locations = [];
               // Iterate through the list of brewery search results and extract a list of locations
-              // $scope.locations
               var breweries = $scope.brewerySearchResults;
               var brewery;
               for (var b = 0; b < breweries.length; b++) {

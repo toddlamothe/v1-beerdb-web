@@ -10,12 +10,29 @@
               <div>&nbsp;</div>
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="textinput">Name</label>
+                  <label class="col-md-4 control-label" for="breweryName">Name</label>
                   <div class="col-md-8">
-                    <input ng-model="brewerySearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter brewery name" class="form-control input-md">
+                    <input ng-model="brewerySearchParams.name" id="breweryName" name="breweryName" type="text" placeholder="enter brewery name" class="form-control input-sm">
                   </div>
                 </div>
-                <div class="form-group col-md-6"></div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryCountry">Country</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchParams.country" id="breweryCountry" name="breweryCountry" type="text" placeholder="enter country name" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryState">State</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchParams.state" id="breweryState" name="breweryState" type="text" placeholder="enter state" class="form-control input-sm">
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryCity">City</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchParams.city" id="breweryCity" name="breweryCity" type="text" placeholder="enter city name" class="form-control input-sm">
+                  </div>
+                </div>
               </div>
 
               <!-- Filters -->
@@ -53,9 +70,9 @@
             <!-- Text input-->
             <div class="row">
               <div class="form-group col-md-12">
-                <label class="col-md-4 control-label" for="textinput">Name</label>
+                <label class="col-md-6 control-label" for="beerName">Name</label>
                 <div class="col-md-6">
-                  <input ng-model="beerSearchParams.name" id="textinput" name="textinput" type="text" placeholder="enter beer name" class="form-control input-md">
+                  <input ng-model="beerSearchParams.name" id="beerName" name="beerName" type="text" placeholder="enter beer name" class="form-control input-sm">
                 </div>
               </div>
             </div>
@@ -63,8 +80,8 @@
             <!-- ABV -->
             <div class="row">
               <div class="form-group col-md-12">
-                <label class="col-md-4 control-label" for="abv">ABV greater than</label>
-                <div class="col-md-4">
+                <label class="col-md-6 control-label" for="abv">ABV greater than</label>
+                <div class="col-md-6">
                   <select id="abv" name="abv" class="form-control">
                     <option value="3">3%</option>
                     <option value="4">4%</option>
@@ -79,8 +96,8 @@
               </div>
               <!-- ABV -->
               <div class="form-group col-md-12">
-                <label class="col-md-4 control-label" for="abv">ABV less than</label>
-                <div class="col-md-4">
+                <label class="col-md-6 control-label" for="abv">ABV less than</label>
+                <div class="col-md-6">
                   <select id="abv" name="abv" class="form-control">
                     <option value="3">3%</option>
                     <option value="4">4%</option>
@@ -93,16 +110,13 @@
                   </select>
                 </div>
               </div>
-              <div class="col-md-4">
-
-              </div>
           </div>
 
             <!-- IBU -->
             <div class="row">
               <div class="form-group col-md-12">
-                <label class="col-md-4 control-label" for="abv">IBU greater than</label>
-                <div class="col-md-4">
+                <label class="col-md-6 control-label" for="abv">IBU greater than</label>
+                <div class="col-md-6">
                   <select id="abv" name="abv" class="form-control">
                     <option value="10">10</option>
                     <option value="20">20</option>
@@ -117,8 +131,8 @@
               </div>
               <!-- IBU -->
               <div class="form-group col-md-12">
-                <label class="col-md-4 control-label" for="abv">IBU less than</label>
-                <div class="col-md-4">
+                <label class="col-md-6 control-label" for="abv">IBU less than</label>
+                <div class="col-md-6">
                   <select id="abv" name="abv" class="form-control">
                     <option value="10">10</option>
                     <option value="20">20</option>
@@ -130,10 +144,6 @@
                     <option value="80">80</option>
                   </select>
                 </div>
-              </div>
-
-              <div class="col-md-4">
-
               </div>
             </div>
 
