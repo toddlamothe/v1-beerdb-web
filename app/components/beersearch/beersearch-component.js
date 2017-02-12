@@ -15,9 +15,8 @@
             $scope.brewerySearchParams = {
               name: '',
               isOrganic: false,
-              country: '',
-              state: '',
-              city: ''
+              lat: '',
+              lon: ''
             };
 
             $scope.beerSearchParams = {

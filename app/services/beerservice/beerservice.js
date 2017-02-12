@@ -22,20 +22,15 @@
           if (searchParams.name.length > 0) {
             searchQueryString.length==0 ?  searchQueryString = "name=" + encodeURI(searchParams.name) : searchQueryString += "&name=" + encodeURI(searchParams.name);
           }
-          // Country
-          if (searchParams.country.length > 0)
-            searchQueryString.length==0 ?  searchQueryString = "country=" + encodeURI(searchParams.country) : searchQueryString += "&country=" + encodeURI(searchParams.country);
-          // State
-          if (searchParams.state.length > 0)
-            searchQueryString.length==0 ?  searchQueryString = "state=" + encodeURI(searchParams.state) : searchQueryString += "&state=" + encodeURI(searchParams.state);
-          // City
-          if (searchParams.city.length > 0)
-            searchQueryString.length==0 ?  searchQueryString = "city=" + encodeURI(searchParams.city) : searchQueryString += "&city=" + encodeURI(searchParams.city);
 
           $log.info("brewery query string: ");
           $log.info(searchQueryString);
 
           return searchQueryString;
+        };
+
+        function getBreweryByLocation(searchParams) {
+
         };
 
         function getBeers(searchParams) {
