@@ -14,9 +14,13 @@
 
             $scope.brewerySearchParams = {
               name: '',
-              isOrganic: false,
-              lat: '',
-              lon: ''
+              isOrganic: false
+            };
+
+            $scope.brewerySearchByLocationParams = {
+              lat: '44.5',
+              lon: '-72.577',
+              radius: '25'
             };
 
             $scope.beerSearchParams = {
@@ -35,12 +39,32 @@
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
+                  $log.info('brewerySearchResults = ', $scope.brewerySearchResults);
                   $scope.buildBreweryLocationList();
                   beerService.refreshMap($scope.locations);
                   $scope.spinner(false);
                 })
                 .error(function() {
                   console.log('  call to beerService.getBrewery failed');
+                  $scope.spinner(false);
+                });
+            };
+
+            $scope.brewerySearchByLocation = function() {
+              console.log('  brewerySearchByLocation');
+              $scope.spinner(true);
+              $scope.clearSearchResults();
+
+              beerService.getBreweryByLocation($scope.brewerySearchByLocationParams)
+                .success(function(data) {
+                  $scope.brewerySearchResults = data.data;
+                  $log.info('brewerySearchResults = ', $scope.brewerySearchResults);
+                  $scope.buildBreweryLocationList();
+                  beerService.refreshMap($scope.locations);
+                  $scope.spinner(false);
+                })
+                .error(function() {
+                  console.log('  call to beerService.getBreweryByLocation failed');
                   $scope.spinner(false);
                 });
             };
@@ -59,7 +83,6 @@
                   console.log('  call to beerService.getBeers failed');
                   $scope.spinner(false);
                 });
-
             };
 
             $scope.spinner = function(showSpinner) {
@@ -81,6 +104,7 @@
                 brewery = breweries[b];
                 // Iterate through the list of locations for this brewery and append
                 for (var l=0; l < brewery.locations.length; l++) {
+                  $log.info('brewery.locations[l].isPrimary = ', brewery.locations[l].isPrimary);
                   if(brewery.locations[l].isPrimary == "Y") {
                     var location = {};
                     location.id = brewery.id;
