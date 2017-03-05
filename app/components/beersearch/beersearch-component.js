@@ -32,14 +32,13 @@
             }
 
             $scope.brewerySearch = function() {
-              console.log('  brewerySearch');
+              $log.info('  [brewerySearch]');
               $scope.spinner(true);
               $scope.clearSearchResults();
 
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
-                  $log.info('brewerySearchResults = ', $scope.brewerySearchResults);
                   $scope.buildBreweryLocationList();
                   beerService.refreshMap($scope.locations);
                   $scope.spinner(false);
@@ -51,16 +50,21 @@
             };
 
             $scope.brewerySearchByLocation = function() {
-              console.log('  brewerySearchByLocation');
+              $log.info('  [brewerySearchByLocation]');
               $scope.spinner(true);
               $scope.clearSearchResults();
 
               beerService.getBreweryByLocation($scope.brewerySearchByLocationParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
-                  $log.info('brewerySearchResults = ', $scope.brewerySearchResults);
                   $scope.buildBreweryLocationList();
-                  beerService.refreshMap($scope.locations);
+                  beerService.refreshMap(
+                    $scope.locations,
+                    {
+                      lat: $scope.brewerySearchByLocationParams.lat,
+                      lon: $scope.brewerySearchByLocationParams.lon
+                    },
+                    $scope.brewerySearchByLocationParams.radius);
                   $scope.spinner(false);
                 })
                 .error(function() {
@@ -104,7 +108,6 @@
                 brewery = breweries[b];
                 // Iterate through the list of locations for this brewery and append
                 for (var l=0; l < brewery.locations.length; l++) {
-                  $log.info('brewery.locations[l].isPrimary = ', brewery.locations[l].isPrimary);
                   if(brewery.locations[l].isPrimary == "Y") {
                     var location = {};
                     location.id = brewery.id;
