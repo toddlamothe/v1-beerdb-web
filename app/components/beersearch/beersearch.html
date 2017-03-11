@@ -61,11 +61,40 @@
                   </div>
                 </div>
               </div>
+              <!-- Radius -->
               <div class="row">
                 <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="breweryName">Radius</label>
-                  <div class="col-md-8">
+                  <label class="col-md-4 control-label" for="breweryName">within</label>
+                  <div class="col-md-3">
                     <input ng-model="brewerySearchByLocationParams.radius" id="lon" name="lon" type="text" placeholder="enter radius (miles)" class="form-control input-sm">
+                  </div>
+                  <label class="col-md-5 control-label pull-left" for="breweryName">mile radius of...</label>
+                </div>
+              </div>
+              <!-- City -->
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryCity">City</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchByLocationParams.locality" id="lon" name="lon" type="text" placeholder="enter city" class="form-control input-sm">
+                  </div>
+                </div>
+              </div>
+              <!-- State -->
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryState">State</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchByLocationParams.region" id="lon" name="lon" type="text" placeholder="enter state" class="form-control input-sm">
+                  </div>
+                </div>
+              </div>
+              <!-- Zip -->
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label class="col-md-4 control-label" for="breweryZip">Zip</label>
+                  <div class="col-md-8">
+                    <input ng-model="brewerySearchByLocationParams.postalCode" id="lon" name="lon" type="text" placeholder="enter postal code" class="form-control input-sm">
                   </div>
                 </div>
               </div>
