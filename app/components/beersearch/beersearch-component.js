@@ -17,14 +17,10 @@
               isOrganic: false
             };
 
-            $scope.brewerySearchByLocationParams = {
-              lat: '44.5',
-              lon: '-72.577',
-              radius: '25'
-            };
-
             $scope.beerSearchParams = {
-              name: ''
+              city  : null,
+              state : null,
+              zip   : null
             };
 
             $scope.toggleMap = function() {
@@ -49,42 +45,20 @@
                 });
             };
 
-            $scope.brewerySearchByLocation = function() {
-              $log.info('  [brewerySearchByLocation]');
+            $scope.breweryLocationSearch = function() {
+              $log.info('  [breweryLocationSearch]');
               $scope.spinner(true);
               $scope.clearSearchResults();
 
-              beerService.getBreweryByLocation($scope.brewerySearchByLocationParams)
+              beerService.getBreweries($scope.beerSearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
                   $scope.buildBreweryLocationList();
-                  beerService.refreshMap(
-                    $scope.locations,
-                    {
-                      lat: $scope.brewerySearchByLocationParams.lat,
-                      lon: $scope.brewerySearchByLocationParams.lon
-                    },
-                    $scope.brewerySearchByLocationParams.radius);
+                  beerService.refreshMap($scope.locations);
                   $scope.spinner(false);
                 })
                 .error(function() {
                   console.log('  call to beerService.getBreweryByLocation failed');
-                  $scope.spinner(false);
-                });
-            };
-
-            $scope.beerSearch = function() {
-              console.log('  beerSearch');
-              $scope.spinner(true);
-              $scope.clearSearchResults();
-
-              beerService.getBeers($scope.beerSearchParams)
-                .success(function(data) {
-                  $scope.beerSearchResults = data.data;
-                  $scope.spinner(false);
-                })
-                .error(function() {
-                  console.log('  call to beerService.getBeers failed');
                   $scope.spinner(false);
                 });
             };
@@ -122,7 +96,6 @@
                     $scope.locations.push(location);
                   }
                 };
-                //$log.info('$scope.locations: ', $scope.locations);
               };
             };
           }]
