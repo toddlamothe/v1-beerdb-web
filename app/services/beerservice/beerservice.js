@@ -35,7 +35,6 @@
 
         function getBrewery(searchParams) {
           var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries?' + buildBrewerySearchQueryString(searchParams);
-          $log.info('url = ', url);
           return $http.get(url);
         };
 
