@@ -6,7 +6,6 @@
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', 'NgMap', '$log', function($scope, beerService, NgMap, $log) {
             console.log('[beerSearch controller]');
-            $scope.sidePanelActive = true;
             $scope.spinnerActive = false;
             $scope.brewerySearchResults = {};
             $scope.beerSearchResults = {};
@@ -23,10 +22,6 @@
               zip   : null
             };
 
-            $scope.toggleMap = function() {
-                $scope.sidePanelActive = !$scope.sidePanelActive;
-            }
-
             $scope.brewerySearch = function() {
               $log.info('  [brewerySearch]');
               $scope.spinner(true);
@@ -35,8 +30,11 @@
               beerService.getBrewery($scope.brewerySearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
-                  $scope.buildBreweryLocationList();
-                  beerService.refreshMap($scope.locations);
+                  $log.info('$scope.brewerySearchResults = ', $scope.brewerySearchResults);
+                  if($scope.brewerySearchResults) {
+                    $scope.buildBreweryLocationList();
+                    beerService.refreshMap($scope.locations);
+                  }
                   $scope.spinner(false);
                 })
                 .error(function() {

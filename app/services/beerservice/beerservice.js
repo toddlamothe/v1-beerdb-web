@@ -17,8 +17,6 @@
 
         function buildBreweriesSearchQueryString(searchParams) {
           var searchQueryString = '';
-          $log.info('search params: ', searchParams);
-          $log.info("brewery location query string: ");
           if (searchParams.state) {
             searchQueryString += "&state=" + encodeURI(searchParams.state);
           }
