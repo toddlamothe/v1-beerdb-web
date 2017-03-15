@@ -27,7 +27,6 @@
           $scope.brewery = JSON.parse(this.brewery);
 
           $scope.setFocus = function(elementId) {
-            $log.info("setting focus to 14 Star:");
             $location.hash(elementId);
             $anchorScroll();
           };
