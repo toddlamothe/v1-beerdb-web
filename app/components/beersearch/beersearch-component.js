@@ -17,7 +17,7 @@
               isOrganic: false
             };
 
-            $scope.beerSearchParams = {
+            $scope.breweryLocationSearchParams = {
               city  : null,
               state : null,
               zip   : null
@@ -50,7 +50,7 @@
               $scope.spinner(true);
               $scope.clearSearchResults();
 
-              beerService.getBreweries($scope.beerSearchParams)
+              beerService.getBreweries($scope.breweryLocationSearchParams)
                 .success(function(data) {
                   $scope.brewerySearchResults = data.data;
                   $scope.buildBreweryLocationList();
