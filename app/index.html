@@ -23,9 +23,12 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
-<div>
-  <beer-search></beer-search>
-</div>
+  <div>
+    <beer-search></beer-search>
+    <div class="container" id="main">
+      <beer-map></beer-map>
+    </div>
+  </div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
@@ -44,7 +47,6 @@
   <script src="services/beerservice/beerservice.js"></script>
   <script src="components/search-cards/card-components.js"></script>
   <script src="components/beersearch/beersearch-component.js"></script>
-  <script src="components/navbar/navbar-component.js"></script>
   <script src="components/beermap/beermap-component.js"></script>
   <!-- endbuild -->
 </body>

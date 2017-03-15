@@ -1,43 +1,7 @@
-<style>
-  @media (min-width: 768px) {
-      .navbar-collapse {
-        height: auto;
-        border-top: 0;
-        box-shadow: none;
-        max-height: none;
-        padding-left:0;
-        padding-right:0;
-      }
-      .navbar-collapse.collapse {
-        display: block !important;
-        width: auto !important;
-        padding-bottom: 0;
-        overflow: visible !important;
-      }
-      .navbar-collapse.in {
-        overflow-x: visible;
-      }
-
-    .navbar
-    {
-    	max-width:300px;
-    	margin-right: 0;
-    	margin-left: 0;
-    }
-
-    .navbar-nav,
-    .navbar-nav > li,
-    .navbar-left,
-    .navbar-right,
-    .navbar-header
-    {float:none !important;}
-
-    .navbar-right .dropdown-menu {left:0;right:auto;}
-    .navbar-collapse .navbar-nav.navbar-right:last-child {
-        margin-right: 0;
-    }
-  }
-</style>
+<div class="nav-side-menu">
+    <div class="brand">Brand Logo</div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+</div>
 
 <div class="container-fluid">
   <div class="row">
@@ -137,13 +101,6 @@
         </div>
         <div class="col-md-12" ng-repeat="beer in beerSearchResults">
             <beer-card beer="{{beer}}"></beer-card>
-        </div>
-      </div>
-    </div>
-    <div id="right" class="col-md-8 container-fluid ">
-      <div class="row">
-        <div class="col-md-12">
-          <beer-map></beer-map>
         </div>
       </div>
     </div>
