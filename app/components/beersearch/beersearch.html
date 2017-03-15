@@ -35,11 +35,13 @@
             </ul>
         </ul>
         <div class="row">
-          <div class="form-group col-md-2">
-            <label class="col-md-4 control-label" for="brewerySearch"></label>
+          <div class="form-group col-md-6">
             <div class="col-md-4">
-              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="breweryLocationSearch()">Search</button> <!-- glyphicon glyphicon-search -->
+              <button id="brewerySearch" name="brewerySearch" class="btn" style="background:gray" ng-click="breweryLocationSearch()">Search</button> <!-- glyphicon glyphicon-search -->
             </div>
+          </div>
+          <div class="col-md-6" ng-if="brewerySearchResults.length">
+            Results: <span class="badge">{{brewerySearchResults.length}}</span>
           </div>
         </div>
     </div>
