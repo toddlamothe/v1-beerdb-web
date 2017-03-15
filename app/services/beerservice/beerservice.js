@@ -52,24 +52,6 @@
           return searchQueryString;
         };
 
-        function getBreweryByLocation(searchParams) {
-          var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries/near?' + buildBrewerySearchByLocationQueryString(searchParams);
-          $log.info('url = ', url);
-          return $http.get(url);
-        };
-
-        function buildBrewerySearchByLocationQueryString(searchParams) {
-          var searchQueryString = '';
-          $log.info('search params: ', searchParams);
-          // Brewery Name
-          searchQueryString = "lat=" + encodeURI(searchParams.lat) + "&lon=" + encodeURI(searchParams.lon) + "&radius=" + encodeURI(searchParams.radius);
-
-          $log.info("brewery location query string: ");
-          $log.info(searchQueryString);
-
-          return searchQueryString;
-        };
-
         function appVersion() {
           var appVersion = APP_CONFIG.appVersion();
         };
@@ -99,8 +81,7 @@
           onHighlightBreweryCard : onHighlightBreweryCard,
           highlightBreweryCard : highlightBreweryCard,
           getBreweries : getBreweries,
-          getBrewery : getBrewery,
-          getBreweryByLocation : getBreweryByLocation
+          getBrewery : getBrewery
         };
 
     }]);
