@@ -4,58 +4,49 @@
 
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
-          <li>
-            Beersearch controls go here.
-          </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
-                </a>
-            </li>
-            <li data-toggle="collapse" data-target="#products">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="products">
-                <li class="active"><a href="#">CSS3 Animation</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Buttons</a></li>
-                <li><a href="#">Tabs &amp; Accordions</a></li>
-                <li><a href="#">Typography</a></li>
-                <li><a href="#">FontAwesome</a></li>
-                <li><a href="#">Slider</a></li>
-                <li><a href="#">Panels</a></li>
-                <li><a href="#">Widgets</a></li>
-                <li><a href="#">Bootstrap Model</a></li>
-            </ul>
             <li data-toggle="collapse" data-target="#service" class="collapsed">
                 <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
             </li>
-            <ul class="sub-menu collapse" id="service">
-                <li>New Service 1</li>
-                <li>New Service 2</li>
-                <li>New Service 3</li>
+            <ul class="collapse" id="service">
+              <li>
+                  <div class="form-group col-md-12">
+                    <label class="col-md-3 control-label" for="breweryCity">City</label>
+                    <div class="col-md-9">
+                      <input ng-model="breweryLocationSearchParams.city" id="city" name="city" type="text" placeholder="enter city" class="form-control input-sm">
+                    </div>
+                  </div>
+              </li>
+              <li>
+                <div class="form-group col-md-12">
+                  <label class="col-md-3 control-label" for="breweryState">State</label>
+                  <div class="col-md-9">
+                    <input ng-model="breweryLocationSearchParams.state" id="state" name="state" type="text" placeholder="enter state" class="form-control input-sm">
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="form-group col-md-12">
+                  <label class="col-md-3 control-label" for="breweryZip">Zip</label>
+                  <div class="col-md-9">
+                    <input ng-model="breweryLocationSearchParams.zip" id="zip" name="zip" type="text" placeholder="enter zip code" class="form-control input-sm">
+                  </div>
+                </div>
+              </li>
             </ul>
-
-
-            <li data-toggle="collapse" data-target="#new" class="collapsed">
-                <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="new">
-                <li>New New 1</li>
-                <li>New New 2</li>
-                <li>New New 3</li>
-            </ul>
-            <li>
-                <a href="#">
-                    <i class="fa fa-user fa-lg"></i> Profile
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-users fa-lg"></i> Users
-                </a>
-            </li>
         </ul>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label class="col-md-4 control-label" for="brewerySearch"></label>
+            <div class="col-md-4">
+              <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="breweryLocationSearch()">Search</button> <!-- glyphicon glyphicon-search -->
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12" ng-repeat="beer in beerSearchResults">
+          <beer-card beer="{{beer}}"></beer-card>
+      </div>
     </div>
 </div>
 
