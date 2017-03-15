@@ -60,9 +60,9 @@
           mapRefreshCallbacks.push(callback);
         }
 
-        var refreshMap = function(locations, centerPos, radius) {
+        var refreshMap = function(locations) {
           for (var i = 0; i < mapRefreshCallbacks.length; i++)
-            mapRefreshCallbacks[i](locations, centerPos, radius);
+            mapRefreshCallbacks[i](locations);
         }
 
         var onHighlightBreweryCard = function(callback) {

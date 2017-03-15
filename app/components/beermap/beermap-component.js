@@ -43,17 +43,6 @@
           beerService.highlightBreweryCard(itemId);
         };
 
-        $scope.convertRadiusToZoom = function(radius) {
-          var zoom;
-          if (radius < 25) zoom = 10
-          else if (radius < 50) zoom = 9
-          else if (radius < 100) zoom = 8
-          else if (radius < 500) zoom = 6
-          else zoom = 4;
-
-          return zoom;
-        };
-
       }]
     })
 
