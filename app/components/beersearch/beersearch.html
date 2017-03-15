@@ -1,110 +1,59 @@
 <div class="nav-side-menu">
-    <div class="brand">Brand Logo</div>
+    <div class="brand"><img src="assets/images/beer-black2.jpg"/></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-</div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div id="left" class="col-md-12">
-      <uib-tabset active="active">
-        <uib-tab index="1" heading="By Location">
-          <form class="form-horizontal">
-            <fieldset>
-              <div>&nbsp;</div>
-              <!-- City -->
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="breweryCity">City</label>
-                  <div class="col-md-8">
-                    <input ng-model="breweryLocationSearchParams.city" id="city" name="city" type="text" placeholder="enter city" class="form-control input-sm">
-                  </div>
-                </div>
-              </div>
-              <!-- State -->
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="breweryState">State</label>
-                  <div class="col-md-8">
-                    <input ng-model="breweryLocationSearchParams.state" id="state" name="state" type="text" placeholder="enter state" class="form-control input-sm">
-                  </div>
-                </div>
-              </div>
-              <!-- Zip -->
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="breweryZip">Zip</label>
-                  <div class="col-md-8">
-                    <input ng-model="breweryLocationSearchParams.zip" id="zip" name="zip" type="text" placeholder="enter zip code" class="form-control input-sm">
-                  </div>
-                </div>
-              </div>
-              <!-- Button -->
-              <div class="row">
-                <div class="form-group col-md-2">
-                  <label class="col-md-4 control-label" for="brewerySearch"></label>
-                  <div class="col-md-4">
-                    <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="breweryLocationSearch()">Search</button> <!-- glyphicon glyphicon-search -->
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </form>
-        </uib-tab>
-        <uib-tab index="0" heading="By Name">
-          <form class="form-horizontal">
-            <fieldset>
-              <div>&nbsp;</div>
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="breweryName">Name</label>
-                  <div class="col-md-8">
-                    <input ng-model="brewerySearchParams.name" id="breweryName" name="breweryName" type="text" placeholder="enter brewery name" class="form-control input-sm">
-                  </div>
-                </div>
-              </div>
-              <!-- Filters -->
-              <div class="row">
-                <div class="form-group col-md-12">
-                  <label class="col-md-4 control-label" for="BreweryFilters">Filters</label>
-                  <div class="col-md-8">
-                    <div class="checkbox">
-                      <label for="BreweryFilters-0">
-                        <input type="checkbox" name="BreweryFilters" id="BreweryFilters-0" value="organic">
-                        Organic Only
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Button -->
-              <div class="row">
-                <div class="form-group col-md-2">
-                  <label class="col-md-4 control-label" for="brewerySearch"></label>
-                  <div class="col-md-4">
-                    <button id="brewerySearch" name="brewerySearch" class="btn btn-primary" ng-click="brewerySearch()">Search</button> <!-- glyphicon glyphicon-search -->
-                  </div>
-                </div>
-              </div>
-            </fieldset>
-          </form>
-        </uib-tab>
-      </uib-tabset>
-      <hr />
-      <div class="row">
-        <div class="col-md-12">
-          <legend>Search Results</legend>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12"  ng-repeat="brewery in brewerySearchResults">
-            <brewery-card brewery="{{brewery}}"></brewery-card>
-        </div>
-        <div class="col-md-12" ng-repeat="beer in beerSearchResults">
-            <beer-card beer="{{beer}}"></beer-card>
-        </div>
-      </div>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                </a>
+            </li>
+            <li data-toggle="collapse" data-target="#products" class="collapsed active">
+                <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="products">
+                <li class="active"><a href="#">CSS3 Animation</a></li>
+                <li><a href="#">General</a></li>
+                <li><a href="#">Buttons</a></li>
+                <li><a href="#">Tabs &amp; Accordions</a></li>
+                <li><a href="#">Typography</a></li>
+                <li><a href="#">FontAwesome</a></li>
+                <li><a href="#">Slider</a></li>
+                <li><a href="#">Panels</a></li>
+                <li><a href="#">Widgets</a></li>
+                <li><a href="#">Bootstrap Model</a></li>
+            </ul>
+            <li data-toggle="collapse" data-target="#service" class="collapsed">
+                <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="service">
+                <li>New Service 1</li>
+                <li>New Service 2</li>
+                <li>New Service 3</li>
+            </ul>
+
+
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+                <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="new">
+                <li>New New 1</li>
+                <li>New New 2</li>
+                <li>New New 3</li>
+            </ul>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user fa-lg"></i> Profile
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users fa-lg"></i> Users
+                </a>
+            </li>
+        </ul>
     </div>
-  </div>
 </div>
 
 <span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>
