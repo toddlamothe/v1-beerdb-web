@@ -209,3 +209,23 @@ body {
 
 
 /* END collapsable navbar styling */
+
+
+/* BOOTSTRAP OVERRIDES */
+
+.panel-default>.beerdb-panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+
+.beerdb-panel-heading {
+    padding: 1px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.beerdb-form-group {
+    margin-top: 15px;
+}

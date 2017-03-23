@@ -1,9 +1,8 @@
 <div class="panel panel-default" id="{{brewery.id}}">
-  <div class="panel-heading">
-
+  <div class="beerdb-panel-heading">
     <div class="row">
       <div class="col-md-9">
-        <h4>{{brewery.name}}</h4>
+        <h5>{{brewery.name}}</h5>
       </div>
       <div class="col-md-3">
         <img src="{{brewery.images.icon}}" />
@@ -19,7 +18,7 @@
     <div class="row">
       <div class="col-md-12">
         <div>
-          {{brewery.description | limitTo:charLimit}}
+          <font class="fa fa-globe fa-lg">{{brewery.description | limitTo:charLimit}}</font>          
           <font ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more">...more</font>
           <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right">show less</div>
         </div>

@@ -4,12 +4,12 @@
 
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
-            <li data-toggle="collapse" data-target="#service" class="collapsed">
-                <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
+            <li>
+                <i class="fa fa-globe fa-lg"></i> Search for Breweries
             </li>
-            <ul class="collapse" id="service">
+            <ul id="service">
               <li>
-                  <div class="form-group col-md-12">
+                  <div class="beerdb-form-group col-md-12">
                     <label class="col-md-3 control-label" for="breweryCity">City</label>
                     <div class="col-md-9">
                       <input ng-model="breweryLocationSearchParams.city" id="city" name="city" type="text" placeholder="enter city" class="form-control input-sm">
@@ -17,7 +17,7 @@
                   </div>
               </li>
               <li>
-                <div class="form-group col-md-12">
+                <div class="beerdb-form-group col-md-12">
                   <label class="col-md-3 control-label" for="breweryState">State</label>
                   <div class="col-md-9">
                     <input ng-model="breweryLocationSearchParams.state" id="state" name="state" type="text" placeholder="enter state" class="form-control input-sm">
@@ -25,7 +25,7 @@
                 </div>
               </li>
               <li>
-                <div class="form-group col-md-12">
+                <div class="beerdb-form-group col-md-12">
                   <label class="col-md-3 control-label" for="breweryZip">Zip</label>
                   <div class="col-md-9">
                     <input ng-model="breweryLocationSearchParams.zip" id="zip" name="zip" type="text" placeholder="enter zip code" class="form-control input-sm">
@@ -45,7 +45,12 @@
           </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" ng-repeat="brewery in brewerySearchResults">
+      <div class="col-md-12">
+          <brewery-card brewery="{{brewery}}"></brewery-card>
+      </div>
+    </div>
+    <div class="row" ng-repeat="brewery in brewerySearchResults">
       <div class="col-md-12" ng-repeat="beer in beerSearchResults">
           <beer-card beer="{{beer}}"></beer-card>
       </div>
