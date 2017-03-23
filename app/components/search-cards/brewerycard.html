@@ -1,4 +1,4 @@
-<div class="panel panel-default" id="{{brewery.id}}">
+<div class="beerdb-panel panel-default" id="{{brewery.id}}">
   <div class="beerdb-panel-heading">
     <div class="row">
       <div class="col-md-9">
@@ -18,7 +18,7 @@
     <div class="row">
       <div class="col-md-12">
         <div>
-          <font class="fa fa-globe fa-lg">{{brewery.description | limitTo:charLimit}}</font>          
+          <font class="fa fa-globe fa-lg">{{brewery.description | limitTo:charLimit}}</font>
           <font ng-if="charLimit==breweryDescriptionMin && brewery.description.length > breweryDescriptionMin" ng-click="readMore()" class="read-more">...more</font>
           <div ng-if="charLimit==breweryDescriptionMax" ng-click="readLess()" class="read-more pull-right">show less</div>
         </div>
