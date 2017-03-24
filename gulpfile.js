@@ -19,16 +19,17 @@ var config = {
   js: ['app/**/*.js', '!./app/bower_components','!./app/bower_components/**'],
 	images: './app/assets/images/*.*',
   html: './app/**/*.html',
-  temp: './.tmp'
+  temp: './.tmp',
+  fonts: './app/assets/fonts/*.*'
 };
 
 var dist = {
 	path: 'dist/',
 	images: 'assets/images/',
-	fonts: 'fonts/'
+	fonts: 'assets/fonts/'
 }
 
-gulp.task('build', ['copy-images', 'minifyjs'], function(){
+gulp.task('build', ['copy-images', 'copy-fonts', 'minifyjs'], function(){
   del(config.temp);
 });
 
@@ -43,6 +44,15 @@ gulp.task('lint', function() {
 gulp.task('copy-images', ['clean-images'], function(){
   return gulp.src([config.images])
     .pipe(gulp.dest(dist.path + dist.images));
+});
+
+gulp.task('copy-fonts', ['clean-fonts'], function(){
+  return gulp.src([config.fonts])
+    .pipe(gulp.dest(dist.path + dist.fonts));
+});
+
+gulp.task('clean-fonts', function(){
+  del(dist.path + dist.fonts);
 });
 
 gulp.task('minifyjs', ['useref', 'templatecache'], function(){
