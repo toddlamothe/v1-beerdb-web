@@ -78,7 +78,7 @@
         }
 
         var setDrawerState = function(showDrawer) {
-          $log.info("setDrawerState(", showDrawer, ")");
+          $log.info('setDrawerState(', showDrawer, ')');
           for (var i = 0; i < drawerStateChangedCallbacks.length; i++)
             drawerStateChangedCallbacks[i](showDrawer);
         }

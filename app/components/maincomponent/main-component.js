@@ -29,7 +29,7 @@
                   placement: position,
                   size: 'sm',
                   backdrop: backdrop,
-                  controller:  function($scope, $uibModalInstance, beerService) {
+                  controller:  ['$scope', '$uibModalInstance', 'beerService', function($scope, $uibModalInstance, beerService) {
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
@@ -100,7 +100,7 @@
                       $scope.brewerySearchResults = {};
                     };
 
-                  }
+                  }]
                 }).result.then(postClose, postClose);
               };
 

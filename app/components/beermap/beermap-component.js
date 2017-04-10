@@ -40,7 +40,8 @@
           NgMap.getMap().then(function(map) {
             map.setCenter(bounds.getCenter());
             map.fitBounds(bounds);
-          });        }
+          });
+        };
 
         $scope.onMarkerClicked = function(itemId) {
           $log.info( ' Marker clicked!');

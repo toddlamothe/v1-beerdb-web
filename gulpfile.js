@@ -20,16 +20,17 @@ var config = {
 	images: './app/assets/images/*.*',
   html: './app/**/*.html',
   temp: './.tmp',
-  fonts: './app/assets/fonts/*.*'
+  fonts: './app/assets/fonts/*.*',
+  bootstrap_fonts: 'app/bower_components/bootstrap/fonts/*.woff*'
 };
 
 var dist = {
 	path: 'dist/',
-	images: 'assets/images/',
-	fonts: 'assets/fonts/'
+	images: 'images/',
+	fonts: 'fonts/'
 }
 
-gulp.task('build', ['copy-images', 'copy-fonts', 'minifyjs'], function(){
+gulp.task('build', ['clean', 'copy-images', 'copy-fonts', 'minifyjs'], function(){
   del(config.temp);
 });
 
@@ -46,8 +47,14 @@ gulp.task('copy-images', ['clean-images'], function(){
     .pipe(gulp.dest(dist.path + dist.images));
 });
 
-gulp.task('copy-fonts', ['clean-fonts'], function(){
+gulp.task('copy-fonts', ['clean-fonts', 'copy-bootstrap-fonts'], function(){
   return gulp.src([config.fonts])
+    .pipe(gulp.dest(dist.path + dist.fonts));
+});
+
+gulp.task('copy-bootstrap-fonts', [], function() {
+  // This is a hack - Bootstrap has a bug preventing fonts from getting copied to the dist directory
+  return gulp.src([config.bootstrap_fonts])
     .pipe(gulp.dest(dist.path + dist.fonts));
 });
 
@@ -125,7 +132,7 @@ function browserSyncInit(baseDir, files, browser) {
 
 };
 
-gulp.task('serve:dist', ['build'], function () {
+gulp.task('serve:dist', ['clean', 'build'], function () {
   browserSyncInit('dist');
 });
 
