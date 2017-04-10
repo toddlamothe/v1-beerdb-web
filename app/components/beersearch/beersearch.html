@@ -1,4 +1,56 @@
 <div class="nav-side-menu">
+  <div class="row">
+    <div class="col-md-12 beerdb-form-group">
+      &nbsp;<i class="fa fa-globe fa-lg"></i> Search for Breweries
+    </div>
+  </div>
+  <div class="row">
+    <div class="beerdb-form-group col-md-12">
+      <label class="col-md-3 control-label" for="breweryCity">City</label>
+      <div class="col-md-9">
+        <input ng-model="breweryLocationSearchParams.city" id="city" name="city" type="text" placeholder="enter city" class="form-control input-sm">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="beerdb-form-group col-md-12">
+      <label class="col-md-3 control-label" for="breweryState">State</label>
+      <div class="col-md-9">
+        <input ng-model="breweryLocationSearchParams.state" id="state" name="state" type="text" placeholder="enter state" class="form-control input-sm">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="beerdb-form-group col-md-12">
+      <label class="col-md-3 control-label" for="breweryZip">Zip</label>
+      <div class="col-md-9">
+        <input ng-model="breweryLocationSearchParams.zip" id="zip" name="zip" type="text" placeholder="enter zip code" class="form-control input-sm">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="beerdb-form-group col-md-12" ng-if="brewerySearchResults.length">
+      Results: <span class="badge">{{brewerySearchResults.length}}</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="beerdb-form-group col-md-12">
+      <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="brewerySearch($event)">Search</button>
+          <button class="btn btn-warning" ng-click="cancelSearch($event)">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+<span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>
+
+
+<!-- <div class="nav-side-menu">
     <div class="brand"><img src="assets/images/beer-black2.jpg"/></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
@@ -35,7 +87,7 @@
               <div class="row">
                 <div class="form-group col-md-6">
                   <div class="col-md-4">
-                    <button id="brewerySearch" name="brewerySearch" class="btn" style="background:gray" ng-click="breweryLocationSearch()">Search</button> <!-- glyphicon glyphicon-search -->
+                    <button id="brewerySearch" name="brewerySearch" class="btn" style="background:gray" ng-click="breweryLocationSearch()">Search</button>
                   </div>
                 </div>
                 <div class="col-md-6" ng-if="brewerySearchResults.length">
@@ -45,16 +97,6 @@
             </li>
         </ul>
     </div>
-    <!-- <div class="row" ng-repeat="brewery in brewerySearchResults">
-      <div class="col-md-12">
-          <brewery-card brewery="{{brewery}}"></brewery-card>
-      </div>
-    </div>
-    <div class="row" ng-repeat="brewery in brewerySearchResults">
-      <div class="col-md-12" ng-repeat="beer in beerSearchResults">
-          <beer-card beer="{{beer}}"></beer-card>
-      </div>
-    </div> -->
 </div>
 
-<span ng-if="spinnerActive" us-spinner="{radius:30, width:8, length: 16}"></span>
+ -->

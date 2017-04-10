@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('BeerdbApp.beerSearch', ['BeerdbApp.searchCards', 'BeerdbApp.beerMap'])
+  angular.module('BeerdbApp.beerSearch', [])
     .component("beerSearch", {
           templateUrl: "components/beersearch/beersearch.html",
           controller: ['$scope', 'beerService', 'NgMap', '$log', function($scope, beerService, NgMap, $log) {

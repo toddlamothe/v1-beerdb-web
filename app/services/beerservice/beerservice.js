@@ -7,6 +7,7 @@
         $log.info('[beerService]');
         var mapRefreshCallbacks = [];
         var highlightBreweryCardCallbacks = [];
+        var drawerStateChangedCallbacks = [];
 
         // THIS IS THE NEW FUNCTION
         function getBreweries(searchParams) {
@@ -72,12 +73,24 @@
             highlightBreweryCardCallbacks[i](elementId);
         }
 
+        var onSetDrawerState = function(callback) {
+          drawerStateChangedCallbacks.push(callback);
+        }
+
+        var setDrawerState = function(showDrawer) {
+          $log.info("setDrawerState(", showDrawer, ")");
+          for (var i = 0; i < drawerStateChangedCallbacks.length; i++)
+            drawerStateChangedCallbacks[i](showDrawer);
+        }
+
         // Return functions as individual service calls
         return {
           onMapRefresh : onMapRefresh,
           refreshMap : refreshMap,
           onHighlightBreweryCard : onHighlightBreweryCard,
           highlightBreweryCard : highlightBreweryCard,
+          onSetDrawerState : onSetDrawerState,
+          setDrawerState : setDrawerState,
           getBreweries : getBreweries,
           getBrewery : getBrewery
         };

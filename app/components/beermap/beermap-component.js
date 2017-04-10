@@ -25,6 +25,10 @@
           $scope.locations = locations;
         };
 
+        $scope.showSearchDrawer = function() {
+          beerService.setDrawerState(true);
+        }
+
         $scope.centerMap = function(locations) {
           // Sample code swiped from https://ngmap.github.io/#/!map_fit_bounds.html
           var bounds = new google.maps.LatLngBounds();
