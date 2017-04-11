@@ -8,6 +8,7 @@
         var mapRefreshCallbacks = [];
         var highlightBreweryCardCallbacks = [];
         var drawerStateChangedCallbacks = [];
+        var searchStartCallbacks = [];
 
         // THIS IS THE NEW FUNCTION
         function getBreweries(searchParams) {
@@ -83,6 +84,16 @@
             drawerStateChangedCallbacks[i](showDrawer);
         }
 
+        var onStartSearch = function(callback) {
+          searchStartCallbacks.push(callback);
+        };
+
+        var startSearch = function() {
+          $log.info('startSearch');
+          for (var i = 0; i < searchStartCallbacks.length; i++)
+            searchStartCallbacks[i]();
+        };
+
         // Return functions as individual service calls
         return {
           onMapRefresh : onMapRefresh,
@@ -92,7 +103,9 @@
           onSetDrawerState : onSetDrawerState,
           setDrawerState : setDrawerState,
           getBreweries : getBreweries,
-          getBrewery : getBrewery
+          getBrewery : getBrewery,
+          onStartSearch : onStartSearch,
+          startSearch : startSearch
         };
 
     }]);

@@ -44,6 +44,7 @@
 
                     $scope.brewerySearch = function(e) {
                       $log.info('  brewerySearch()');
+                      beerService.startSearch();
                       $uibModalInstance.close();
                       e.stopPropagation();
 

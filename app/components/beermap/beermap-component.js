@@ -6,18 +6,26 @@
   mapComponent.component('beerMap', {
       templateUrl: 'components/beermap/beermap.html',
       controller: ['$scope', '$log', 'beerService', 'NgMap', function($scope, $log, beerService, NgMap) {
-        $log.info('[beerMap]');
+        $log.info('[beerMapController]');
+        $scope.spinnerActive = false;
         $scope.centerPos = {
           lat: 39.5,
           lon: -98.35,
           zoom: 4
         }
 
+        beerService.onStartSearch(function() {
+          $log.info(' [onStartSearch]');
+          $scope.spinnerActive = true;
+        })
+
         // Register callback for map toggle service event
         beerService.onMapRefresh(function(locations) {
           $log.info(' [onMapRefresh]');
           $scope.refreshMap(locations);
           $scope.centerMap(locations);
+          $log.info('$scope.spinnerActive = false;');
+          $scope.spinnerActive = false;
         });
 
         $scope.refreshMap = function(locations) {
@@ -47,6 +55,11 @@
           $log.info( ' Marker clicked!');
           beerService.highlightBreweryCard(itemId);
         };
+
+        $scope.spinner = function(showSpinner) {
+          $scope.spinnerActive = showSpinner;
+        };
+
 
       }]
     })
