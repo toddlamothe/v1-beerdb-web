@@ -14,27 +14,32 @@
           },
           localhost: {
             config: {
-              breweryDbBaseUrl: "http://localhost:8010/services/beerdb/api/beerdb/"
+              breweryDbBaseUrl: "http://localhost:8010/services/beerdb/api/beerdb/",
+              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           },
           pc: {
             config: {
-              breweryDbBaseUrl: "http://10.160.126.109:8010/services/beerdb/api/beerdb/"
+              breweryDbBaseUrl: "http://10.160.126.109:8010/services/beerdb/api/beerdb/",
+              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           },
           azure: {
             config: {
-              breweryDbBaseUrl: "http://beerdbapi.azurewebsites.net/api/beerdb/"
+              breweryDbBaseUrl: "http://beerdbapi.azurewebsites.net/api/beerdb/",
+              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           },
           docker: {
             config: {
-              breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com:8888/api/beerdb/"
+              breweryDbBaseUrl: "http://beerdb-win-dock.eastus.cloudapp.azure.com:8888/api/beerdb/",
+              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           },
           techfest: {
             config: {
-              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/"
+              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/",
+              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           }
         };

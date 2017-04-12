@@ -29,12 +29,18 @@
                   placement: position,
                   size: 'sm',
                   backdrop: backdrop,
-                  controller:  ['$scope', '$uibModalInstance', 'beerService', function($scope, $uibModalInstance, beerService) {
+                  controller:  ['$scope', '$uibModalInstance', 'beerService', 'geoLocationService', function($scope, $uibModalInstance, beerService, geoLocationService) {
+                    /*
+                      This is the controller for the beersearch component.
+                      Use of the angular aside component requires the controller to be included here
+                      To Do: move this controller to its own file and module
+                    */
                     $log.info(' [AsideController]');
 
                     $scope.locationServicesEnabled = false;
+
                     if (navigator.geolocation) {
-                        $log.info('$scope.locationServicesEnabled = true');
+                      $log.info('$scope.locationServicesEnabled = true');
                       $scope.locationServicesEnabled = true;
                         navigator.geolocation.getCurrentPosition(function(position){
                           $scope.$apply(function(){
@@ -47,6 +53,12 @@
                         $log.info('$scope.locationServicesEnabled = false');
                         $scope.locationServicesEnabled = false;
                       }
+
+                    geoLocationService.convertLatLonToZipCode(40.714224,-73.961452, function(zipCode) {
+                      $log.info('callback successful!');
+                      $log.info('zipCode = ', zipCode)
+                      $scope.currentLocationZip = zipCode;
+                    });
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
