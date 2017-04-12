@@ -37,31 +37,10 @@
                     */
                     $log.info(' [AsideController]');
 
-                    $scope.locationServicesEnabled = false;
-
-                    if (navigator.geolocation) {
-                      $log.info('$scope.locationServicesEnabled = true');
+                    if (navigator.geolocation)
                       $scope.locationServicesEnabled = true;
-                        navigator.geolocation.getCurrentPosition(function(position){
-                          $scope.$apply(function(){
-                            $scope.position = position;
-                            var lat = position.coords.latitude;
-                            var lon = position.coords.longitude;
-                            $log.info('position.coords = ', position.coords);
-                            $log.info('lat/lon = ', lat + '/' + lon);
-
-                            geoLocationService.convertLatLonToZipCode(lat,lon, function(zipCode) {
-                              $log.info('callback successful!');
-                              $log.info('zipCode = ', zipCode)
-                              $scope.currentLocationZip = zipCode;
-                            });
-                          });
-                        });
-                      }
-                      else {
-                        $log.info('$scope.locationServicesEnabled = false');
-                        $scope.locationServicesEnabled = false;
-                      }
+                    else
+                      $scope.locationServicesEnabled = false;
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
@@ -123,6 +102,40 @@
                         };
                       };
                     };
+
+                    $scope.findBreweriesNearMe = function(e) {
+                      if (navigator.geolocation) {
+                        beerService.startSearch();
+                        $log.info('Loation services available');
+                        $scope.locationServicesEnabled = true;
+                          navigator.geolocation.getCurrentPosition(function(position){
+                            $scope.$apply(function(){
+                              $scope.position = position;
+                              var lat = position.coords.latitude;
+                              var lon = position.coords.longitude;
+                              // $log.info('position.coords = ', position.coords);
+                              // $log.info('lat/lon = ', lat + '/' + lon);
+
+                              geoLocationService.convertLatLonToZipCode(lat,lon, function(zipCode) {
+                                $log.info('callback successful!');
+                                $log.info('zipCode = ', zipCode)
+                                $scope.currentLocationZip = zipCode;
+                                // Now look for breweries near this zip code
+                                $scope.breweryLocationSearchParams = {
+                                  city  : null,
+                                  state : null,
+                                  zip   : zipCode
+                                };
+                                $scope.brewerySearch(e);
+                              });
+                            });
+                          });
+                        }
+                        else {
+                          $log.info('Location services not available');
+                          $scope.locationServicesEnabled = false;
+                        }
+                    }
 
                     $scope.spinner = function(showSpinner) {
                       $scope.spinnerActive = showSpinner;

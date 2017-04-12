@@ -47,9 +47,18 @@
   </div>
 
   <div class="row" ng-if="locationServicesEnabled">
-    <div class="col-md-12">
-      Current Zip Code: {{currentLocationZip}}
+    <div class="col-md-12 beerdb-form-group">
+      &nbsp;<i class="fa fa-globe fa-lg"></i> Find Breweries Near Me
     </div>
   </div>
+
+  <div class="row" ng-if="locationServicesEnabled">
+    <div class="beerdb-form-group col-md-12">
+      <div class="modal-footer">
+          <button class="btn btn-primary" ng-click="findBreweriesNearMe($event)">Search Near Me</button>
+      </div>
+    </div>
+  </div>
+
 
 </div>
