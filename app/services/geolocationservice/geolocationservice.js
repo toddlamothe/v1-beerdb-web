@@ -12,8 +12,16 @@
           $log.info('url = ', url);
           $http.get(url).then(function successCallback(response) {
             $log.info('reverse geocode success!');
-            if(response.data.results[0].address_components[7].short_name) {
-              callback(response.data.results[0].address_components[7].short_name)
+            // Iterate through the address componetns
+            // Find the one where "types" = postal_code and return the "short_name" property
+            var zipCode;
+            for (var x=0;x<response.data.results[0].address_components.length;x++) {
+              if (response.data.results[0].address_components[x].types == "postal_code") {
+                zipCode = response.data.results[0].address_components[x].short_name
+              }
+            }
+            if(zipCode) {
+              callback(zipCode)
             }
             else {
               callback('Error detecting zip code from current location');

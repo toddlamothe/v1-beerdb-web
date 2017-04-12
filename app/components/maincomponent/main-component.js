@@ -45,7 +45,16 @@
                         navigator.geolocation.getCurrentPosition(function(position){
                           $scope.$apply(function(){
                             $scope.position = position;
-                            $log.info('$scope.position = ', $scope.position);
+                            var lat = position.coords.latitude;
+                            var lon = position.coords.longitude;
+                            $log.info('position.coords = ', position.coords);
+                            $log.info('lat/lon = ', lat + '/' + lon);
+
+                            geoLocationService.convertLatLonToZipCode(lat,lon, function(zipCode) {
+                              $log.info('callback successful!');
+                              $log.info('zipCode = ', zipCode)
+                              $scope.currentLocationZip = zipCode;
+                            });
                           });
                         });
                       }
@@ -53,12 +62,6 @@
                         $log.info('$scope.locationServicesEnabled = false');
                         $scope.locationServicesEnabled = false;
                       }
-
-                    geoLocationService.convertLatLonToZipCode(40.714224,-73.961452, function(zipCode) {
-                      $log.info('callback successful!');
-                      $log.info('zipCode = ', zipCode)
-                      $scope.currentLocationZip = zipCode;
-                    });
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
