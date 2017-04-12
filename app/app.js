@@ -5,6 +5,7 @@
     'ui.bootstrap',
     'ConfigurationService',
     'BeerDbApp.BeerService',
+    'BeerDbApp.GeoLocationService',
     'angularSpinner',
     'ngMap',
     'ngAside',

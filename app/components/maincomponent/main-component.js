@@ -30,6 +30,23 @@
                   size: 'sm',
                   backdrop: backdrop,
                   controller:  ['$scope', '$uibModalInstance', 'beerService', function($scope, $uibModalInstance, beerService) {
+                    $log.info(' [AsideController]');
+
+                    $scope.locationServicesEnabled = false;
+                    if (navigator.geolocation) {
+                        $log.info('$scope.locationServicesEnabled = true');
+                      $scope.locationServicesEnabled = true;
+                        navigator.geolocation.getCurrentPosition(function(position){
+                          $scope.$apply(function(){
+                            $scope.position = position;
+                            $log.info('$scope.position = ', $scope.position);
+                          });
+                        });
+                      }
+                      else {
+                        $log.info('$scope.locationServicesEnabled = false');
+                        $scope.locationServicesEnabled = false;
+                      }
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
