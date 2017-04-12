@@ -8,7 +8,6 @@
     'angularSpinner',
     'ngMap',
     'ngAside',
-    'ngCordova',
     'BeerdbApp.main',
     'BeerdbApp.beerMap'
   ]);
