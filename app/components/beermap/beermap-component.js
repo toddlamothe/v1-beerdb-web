@@ -24,7 +24,6 @@
           $log.info(' [onMapRefresh]');
           $scope.refreshMap(locations);
           $scope.centerMap(locations);
-          $log.info('$scope.spinnerActive = false;');
           $scope.spinnerActive = false;
         });
 
