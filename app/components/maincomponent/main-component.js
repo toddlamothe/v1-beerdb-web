@@ -36,6 +36,7 @@
                       To Do: move this controller to its own file and module
                     */
                     $log.info(' [AsideController]');
+                    $scope.currentStatus = "waiting...";
 
                     if (navigator.geolocation)
                       $scope.locationServicesEnabled = true;
@@ -67,10 +68,12 @@
                           $scope.brewerySearchResults = data.data;
                           $scope.buildBreweryLocationList();
                           beerService.refreshMap($scope.locations);
+                          $scope.currentStatus = "getBreweries success: number of breweries = ", $scope.locations.length;
                           $scope.spinner(false);
                         })
                         .error(function() {
                           console.log('  call to beerService.getBreweryByLocation failed');
+                          $scope.currentStatus = "getBreweries FAIL"
                           $scope.spinner(false);
                         });
 
@@ -95,7 +98,7 @@
                               location.image = brewery.images.icon;
                             }
                             else {
-                              location.image = 'assets/images/beer-small.png';
+                              location.image = 'assets/images/Beer-icon-55x55.png';
                             }
                             $scope.locations.push(location);
                           }

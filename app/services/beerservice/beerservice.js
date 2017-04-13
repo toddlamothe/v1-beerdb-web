@@ -13,7 +13,6 @@
         // THIS IS THE NEW FUNCTION
         function getBreweries(searchParams) {
           var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries/locations?isClosed=n' + buildBreweriesSearchQueryString(searchParams);
-          $log.info('url = ', url);
           return $http.get(url);
         }
 
@@ -28,7 +27,6 @@
           if (searchParams.zip) {
             searchQueryString += "&zip=" + encodeURI(searchParams.zip);
           }
-          $log.info(searchQueryString);
 
           return searchQueryString;
         };
