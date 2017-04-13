@@ -108,8 +108,10 @@
 
                     $scope.findBreweriesNearMe = function(e) {
                       if (navigator.geolocation) {
-                        beerService.startSearch();
                         $log.info('Loation services available');
+                        beerService.startSearch();
+                        $uibModalInstance.close();
+                        e.stopPropagation();
                         $scope.locationServicesEnabled = true;
                           navigator.geolocation.getCurrentPosition(function(position){
                             $scope.$apply(function(){
