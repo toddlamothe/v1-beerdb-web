@@ -28,7 +28,7 @@
                   templateUrl: 'components/beersearch/beerSearch.html',
                   placement: position,
                   size: 'sm',
-                  backdrop: backdrop,
+                  backdrop: true,
                   controller:  ['$scope', '$uibModalInstance', 'beerService', 'geoLocationService', function($scope, $uibModalInstance, beerService, geoLocationService) {
                     /*
                       This is the controller for the beersearch component.
