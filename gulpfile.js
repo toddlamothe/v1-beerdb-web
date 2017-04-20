@@ -26,7 +26,7 @@ var config = {
 
 var dist = {
 	path: 'dist/',
-	images: 'images/',
+	images: 'assets/images/',
 	fonts: 'fonts/'
 }
 
