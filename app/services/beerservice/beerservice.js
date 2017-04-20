@@ -13,6 +13,7 @@
         // THIS IS THE NEW FUNCTION
         function getBreweries(searchParams) {
           var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries/locations?isClosed=n' + buildBreweriesSearchQueryString(searchParams);
+          $log.info('url = ', url);
           return $http.get(url);
         }
 

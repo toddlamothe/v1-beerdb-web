@@ -26,7 +26,7 @@
           },
           azure: {
             config: {
-              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/",
+              breweryDbBaseUrl: "https://beerdb.eastus.cloudapp.azure.com/api/api/beerdb/",
               reverseGeoCodeServiceUrl: "https://maps.googleapis.com/maps/api/geocode/json"
             }
           },
@@ -38,7 +38,7 @@
           },
           techfest: {
             config: {
-              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/",
+              breweryDbBaseUrl: "https://beerdb.eastus.cloudapp.azure.com/api/api/beerdb/",
               reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
             }
           }
