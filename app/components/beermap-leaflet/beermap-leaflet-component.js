@@ -31,7 +31,6 @@
           $log.info(' [refreshMap]');
           $scope.locations = locations;
           $scope.center.zoom = 12;
-          $log.info(' [beermap-leaflet-component] locations = ', $scope.locations);
         };
 
         $scope.showSearchDrawer = function() {

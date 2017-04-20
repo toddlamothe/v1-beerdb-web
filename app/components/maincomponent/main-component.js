@@ -96,7 +96,7 @@
                             var marker = {
                               lat: brewery.locations[l].latitude,
                               lng: brewery.locations[l].longitude,
-                              message: brewery.name,
+                              message: $scope.buildToolTipHtml(brewery),
                               focus: false,
                             };
                             if (brewery.images && brewery.images.icon) {
@@ -117,6 +117,16 @@
                         };
                       };
                     };
+
+                    $scope.buildToolTipHtml = function(brewery) {
+                      $log.info('brewery = ', brewery);
+                      var html = "<b><a target='_blank' href='" + brewery.website + "'>" + brewery.name + "</a></b>";
+                      if (brewery.established)
+                        html+= " <span class='pull-right'>Est " + brewery.established + "</span>";
+                      if (brewery.description)
+                        html+= "<br>" + brewery.description;
+                      return html;
+                    }
 
                     $scope.findBreweriesNearMe = function(e) {
                       if (navigator.geolocation) {
