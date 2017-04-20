@@ -5,7 +5,7 @@
     .constant('APP_CONFIG', (function configurationBuilder() {
       var _environment = "azure";
       var _version = 0.1;
-      var _build = 16;
+      var _build = 18;
       var _environments = {
           test: {
             config: {
