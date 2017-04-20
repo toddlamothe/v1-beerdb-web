@@ -7,10 +7,10 @@
     'BeerDbApp.BeerService',
     'BeerDbApp.GeoLocationService',
     'angularSpinner',
-    'ngMap',
     'ngAside',
     'BeerdbApp.main',
-    'BeerdbApp.beerMap'
+    'BeerdbApp.beerMapLeaflet',
+    'leaflet-directive'
   ]);
 
 }());

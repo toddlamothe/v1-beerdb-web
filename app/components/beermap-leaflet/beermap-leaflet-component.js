@@ -1,17 +1,17 @@
 (function () {
   'use strict';
 
-    var mapComponent = angular.module('BeerdbApp.beerMap', []);
+    var mapComponent = angular.module('BeerdbApp.beerMapLeaflet', []);
 
-  mapComponent.component('beerMap', {
-      templateUrl: 'components/beermap/beermap.html',
-      controller: ['$scope', '$log', 'beerService', 'NgMap', function($scope, $log, beerService, NgMap) {
-        $log.info('[beerMapController]');
+  mapComponent.component('beerMapLeaflet', {
+      templateUrl: 'components/beermap-leaflet/beermap-leaflet.html',
+      controller: ['$scope', '$log', 'beerService', 'leafletData', function($scope, $log, beerService, leafletData) {
+        $log.info('[beerMapLeafletController]');
         $scope.spinnerActive = false;
-        $scope.centerPos = {
-          lat: 39.5,
-          lon: -98.35,
-          zoom: 4
+
+        $scope.center = {
+            autoDiscover: true,
+            zoom: 8
         }
 
         beerService.onStartSearch(function() {
@@ -30,6 +30,8 @@
         $scope.refreshMap = function(locations) {
           $log.info(' [refreshMap]');
           $scope.locations = locations;
+          $scope.center.zoom = 12;
+          $log.info(' [beermap-leaflet-component] locations = ', $scope.locations);
         };
 
         $scope.showSearchDrawer = function() {
@@ -37,28 +39,25 @@
         }
 
         $scope.centerMap = function(locations) {
-          // Sample code swiped from https://ngmap.github.io/#/!map_fit_bounds.html
-          var bounds = new google.maps.LatLngBounds();
-          for (var i=0; i<locations.length; i++) {
-            var latlng = new google.maps.LatLng(locations[i].pos[0], locations[i].pos[1]);
-            bounds.extend(latlng);
-          }
-          //$log.info(' bounds = ', bounds);
-          NgMap.getMap().then(function(map) {
-            map.setCenter(bounds.getCenter());
-            map.fitBounds(bounds);
+          leafletData.getMap().then(function(map) {
+            var latlngs = [];
+            for (var i in locations) {
+              latlngs.push({
+                lat: locations[i].lat,
+                lng: locations[i].lng
+              });
+            }
+            map.fitBounds(latlngs);
           });
         };
 
         $scope.onMarkerClicked = function(itemId) {
           $log.info( ' Marker clicked!');
-          beerService.highlightBreweryCard(itemId);
         };
 
         $scope.spinner = function(showSpinner) {
           $scope.spinnerActive = showSpinner;
         };
-
 
       }]
     })

@@ -66,7 +66,8 @@
                       beerService.getBreweries($scope.breweryLocationSearchParams)
                         .success(function(data) {
                           $scope.brewerySearchResults = data.data;
-                          $scope.buildBreweryLocationList();
+                          // $scope.buildBreweryLocationList();
+                          $scope.buildBreweryLocationListLeaflet();
                           beerService.refreshMap($scope.locations);
                           $scope.currentStatus = "getBreweries success: number of breweries = ", $scope.locations.length;
                           $scope.spinner(false);
@@ -79,7 +80,8 @@
 
                     };
 
-                    $scope.buildBreweryLocationList = function() {
+                    $scope.buildBreweryLocationListLeaflet = function() {
+                      $log.info( '  [buildBreweryLocationListLeaflet]');
                       // Clear existing locations list
                       $scope.locations = [];
                       // Iterate through the list of brewery search results and extract a list of locations
@@ -90,17 +92,27 @@
                         // Iterate through the list of locations for this brewery and append
                         for (var l=0; l < brewery.locations.length; l++) {
                           if(brewery.locations[l].isPrimary == "Y") {
-                            var location = {};
-                            location.id = brewery.id;
-                            location.pos = [brewery.locations[l].latitude, brewery.locations[l].longitude];
-                            location.name = brewery.locations[l].name;
+
+                            var marker = {
+                              lat: brewery.locations[l].latitude,
+                              lng: brewery.locations[l].longitude,
+                              message: brewery.name,
+                              focus: false,
+                            };
                             if (brewery.images && brewery.images.icon) {
-                              location.image = brewery.images.icon;
+                              marker.icon = {
+                                iconUrl: brewery.images.icon,
+                                iconSize: [45, 45]
+                              };
                             }
                             else {
-                              location.image = 'assets/images/Beer-icon-55x55.png';
+                              marker.icon = {
+                                iconUrl: 'assets/images/Beer-icon-55x55.png',
+                                iconSize: [45, 45]
+                              };
                             }
-                            $scope.locations.push(location);
+
+                            $scope.locations.push(marker);
                           }
                         };
                       };
