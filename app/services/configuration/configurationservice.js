@@ -3,7 +3,7 @@
 
    angular.module('ConfigurationService', [])
     .constant('APP_CONFIG', (function configurationBuilder() {
-      var _environment = "techfest";
+      var _environment = "azure";
       var _version = 0.1;
       var _build = 16;
       var _environments = {
@@ -26,8 +26,8 @@
           },
           azure: {
             config: {
-              breweryDbBaseUrl: "http://beerdbapi.azurewebsites.net/api/beerdb/",
-              reverseGeoCodeServiceUrl: "http://maps.googleapis.com/maps/api/geocode/json"
+              breweryDbBaseUrl: "http://beerdbapp01.eastus.cloudapp.azure.com:8888/api/beerdb/",
+              reverseGeoCodeServiceUrl: "https://maps.googleapis.com/maps/api/geocode/json"
             }
           },
           docker: {

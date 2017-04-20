@@ -110,7 +110,7 @@
                       if (navigator.geolocation) {
                         $log.info('Loation services available');
                         beerService.startSearch();
-                        $uibModalInstance.close();
+                        //$uibModalInstance.close();
                         e.stopPropagation();
                         $scope.locationServicesEnabled = true;
                           navigator.geolocation.getCurrentPosition(function(position){
@@ -118,8 +118,6 @@
                               $scope.position = position;
                               var lat = position.coords.latitude;
                               var lon = position.coords.longitude;
-                              // $log.info('position.coords = ', position.coords);
-                              // $log.info('lat/lon = ', lat + '/' + lon);
 
                               geoLocationService.convertLatLonToZipCode(lat,lon, function(zipCode) {
                                 $log.info('callback successful!');
