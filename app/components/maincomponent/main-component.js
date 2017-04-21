@@ -119,7 +119,6 @@
                     };
 
                     $scope.buildToolTipHtml = function(brewery) {
-                      $log.info('brewery = ', brewery);
                       var html = "<b><a target='_blank' href='" + brewery.website + "'>" + brewery.name + "</a></b>";
                       if (brewery.established)
                         html+= " <span class='pull-right'>Est " + brewery.established + "</span>";
