@@ -141,7 +141,6 @@
                               var lon = position.coords.longitude;
 
                               geoLocationService.convertLatLonToZipCode(lat,lon, function(zipCode) {
-                                $log.info('callback successful!');
                                 $log.info('zipCode = ', zipCode)
                                 $scope.currentLocationZip = zipCode;
                                 // Now look for breweries near this zip code

@@ -5,34 +5,6 @@
     $httpBackend = null,
     $rootScope,
     APP_CONFIG = null,
-    mockBreweryPayload_old = {
-        "currentPage": 1,
-        "numberOfPages": 1,
-        "totalResults": 1,
-        "data": [
-          {
-            "id": "pj4HJk",
-            "name": "Test Brewery",
-            "nameShortDisplay": "The Alchemist",
-            "description": "The Alchemist is a 7 barrel brew pub specializing in hand-crafted  beer and casual pub fare.  All of our ales flow directly from our  basement brewery, which was designed and installed by our brewer and  co-proprietor John Kimmich.   We use only the finest imported malts and  domestic hops available to bring you the tastiest and finest selection  of beers in Vermont!",
-            "website": "http://www.alchemistbeer.com/",
-            "established": "1976",
-            "isOrganic": "N",
-            "images": {
-              "icon": "https://s3.amazonaws.com/brewerydbapi/brewery/pj4HJk/upload_rtxgwR-icon.png",
-              "medium": "https://s3.amazonaws.com/brewerydbapi/brewery/pj4HJk/upload_rtxgwR-medium.png",
-              "large": "https://s3.amazonaws.com/brewerydbapi/brewery/pj4HJk/upload_rtxgwR-large.png",
-              "squareMedium": "https://s3.amazonaws.com/brewerydbapi/brewery/pj4HJk/upload_rtxgwR-squareMedium.png",
-              "squareLarge": "https://s3.amazonaws.com/brewerydbapi/brewery/pj4HJk/upload_rtxgwR-squareLarge.png"
-            },
-            "status": "verified",
-            "statusDisplay": "Verified",
-            "createDate": "2012-01-03 02:42:09",
-            "updateDate": "2015-12-22 15:00:03"
-          }
-        ],
-        "status": "success"
-      },
       mockBreweryPayload = {
           "currentPage": 1,
           "numberOfPages": 1,
@@ -70,7 +42,14 @@
             }
           ],
           "status": null
-      };
+      },
+      locations = [
+        {
+          lat: 44.4284058,
+          lng: -73.21316,
+          message: "test message"
+        }
+      ];
 
 
 
@@ -98,13 +77,21 @@
 
       beerService.getBreweries(searchParams)
         .success(function(data) {
-          console.log('return data from mock service call: ', data);
           expect(data.data[0].name).toBe('Test Brewery');
         });
 
         $httpBackend.flush();
     });
-    
+
+    it('should invoke callback on map refresh', function() {
+      beerService.onMapRefresh(function(locations) {
+        console.log(locations);
+        expect(locations[0].message).toBe("test message");
+      });
+
+      beerService.refreshMap(locations);
+    });
+
   });
 
 }());

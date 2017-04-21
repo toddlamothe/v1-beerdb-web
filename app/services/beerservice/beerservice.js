@@ -13,7 +13,7 @@
         // THIS IS THE NEW FUNCTION
         function getBreweries(searchParams) {
           var url = APP_CONFIG.get("breweryDbBaseUrl") + 'breweries/locations?isClosed=n' + buildBreweriesSearchQueryString(searchParams);
-          $log.info('url = ', url);
+          // $log.info('url = ', url);
           return $http.get(url);
         }
 
@@ -39,14 +39,14 @@
 
         function buildBrewerySearchQueryString(searchParams) {
           var searchQueryString = '';
-          $log.info('search params: ', searchParams);
+          // $log.info('search params: ', searchParams);
           // Brewery Name
           if (searchParams.name.length > 0) {
             searchQueryString.length==0 ?  searchQueryString = "name=" + encodeURI(searchParams.name) : searchQueryString += "&name=" + encodeURI(searchParams.name);
           }
 
-          $log.info("brewery query string: ");
-          $log.info(searchQueryString);
+          // $log.info("brewery query string: ");
+          // $log.info(searchQueryString);
 
           return searchQueryString;
         };

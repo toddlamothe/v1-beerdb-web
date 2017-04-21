@@ -11,7 +11,7 @@
       APP_CONFIG = $injector.get('APP_CONFIG');
     }));
 
-    it('should pass', function() {
+    it('should return a breweryDb base url', function() {
       expect(APP_CONFIG.get('breweryDbBaseUrl')).toBeDefined();
     });
   });
