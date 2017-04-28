@@ -11,6 +11,8 @@
     'BeerdbApp.main',
     'BeerdbApp.beerMapLeaflet',
     'leaflet-directive'
-  ]);
+  ]).config(function($logProvider) {
+    $logProvider.debugEnabled(false);
+  });
 
 }());

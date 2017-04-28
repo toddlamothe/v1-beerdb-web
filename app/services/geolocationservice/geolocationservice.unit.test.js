@@ -11,6 +11,7 @@
     }));
 
     it('should be true', function() {
+      geoLocationService.convertLatLonToZipCode
         expect(true).toBe(false);
     });
 

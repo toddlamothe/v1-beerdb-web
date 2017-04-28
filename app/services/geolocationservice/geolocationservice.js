@@ -37,7 +37,7 @@
 
         // Return functions as individual service calls
         return {
-          convertLatLonToZipCode : convertLatLonToZipCode
+            convertLatLonToZipCode : convertLatLonToZipCode
         };
 
     }]);
