@@ -38,10 +38,8 @@
                     $log.info(' [AsideController]');
                     $scope.currentStatus = "waiting...";
 
-                    if (navigator.geolocation)
-                      $scope.locationServicesEnabled = true;
-                    else
-                      $scope.locationServicesEnabled = false;
+                    $scope.locationServicesEnabled = geoLocationService.geolocationSupported;
+                    $scope.userMediaEnabled = geoLocationService.userMediaSupported;
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
@@ -128,7 +126,7 @@
                     }
 
                     $scope.findBreweriesNearMe = function(e) {
-                      if (navigator.geolocation) {
+                      if (geoLocationService.geolocationSupported) {
                         $log.info('Loation services available');
                         beerService.startSearch();
                         //$uibModalInstance.close();
@@ -158,7 +156,7 @@
                           $log.info('Location services not available');
                           $scope.locationServicesEnabled = false;
                         }
-                    }
+                    };
 
                     $scope.spinner = function(showSpinner) {
                       $scope.spinnerActive = showSpinner;

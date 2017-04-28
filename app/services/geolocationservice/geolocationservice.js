@@ -35,9 +35,21 @@
           return '&latlng=' + lat + ',' + lon;
         }
 
+        function userMediaSupported() {
+          //return navigator.getUserMedia;
+          return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+        }
+
+        function geolocationSupported() {
+          return navigator.geolocation;
+        }
+
         // Return functions as individual service calls
         return {
-            convertLatLonToZipCode : convertLatLonToZipCode
+            convertLatLonToZipCode : convertLatLonToZipCode,
+            userMediaSupported : userMediaSupported,
+            geolocationSupported : geolocationSupported
         };
 
     }]);

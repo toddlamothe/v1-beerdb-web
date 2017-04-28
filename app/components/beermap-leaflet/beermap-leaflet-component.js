@@ -5,13 +5,13 @@
 
   mapComponent.component('beerMapLeaflet', {
       templateUrl: 'components/beermap-leaflet/beermap-leaflet.html',
-      controller: ['$scope', '$log', 'beerService', 'leafletData', function($scope, $log, beerService, leafletData) {
+      controller: ['$scope', '$log', 'beerService', 'leafletData', 'APP_CONFIG', function($scope, $log, beerService, leafletData, APP_CONFIG) {
         $log.info('[beerMapLeafletController]');
         $scope.spinnerActive = false;
 
         $scope.center = {
             autoDiscover: true,
-            zoom: 8
+            zoom: APP_CONFIG.get("defaultMapZoom")
         }
 
         beerService.onStartSearch(function() {
