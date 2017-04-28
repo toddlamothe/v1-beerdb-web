@@ -14,5 +14,9 @@
     it('should return a breweryDb base url', function() {
       expect(APP_CONFIG.get('breweryDbBaseUrl')).toBeDefined();
     });
+
+    it('should return default map zoom level', function() {
+      expect(APP_CONFIG.get('defaultMapZoom')).toBeDefined();
+    });
   });
 }());
