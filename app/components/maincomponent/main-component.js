@@ -36,10 +36,10 @@
                       To Do: move this controller to its own file and module
                     */
                     $log.info(' [AsideController]');
-                    $scope.currentStatus = "waiting...";
 
                     $scope.locationServicesEnabled = geoLocationService.geolocationSupported;
                     $scope.userMediaEnabled = geoLocationService.userMediaSupported;
+                    $scope.voiceSearchActivated = false;
 
                     $scope.breweryLocationSearchParams = {
                       city  : null,
@@ -165,6 +165,10 @@
                     $scope.clearSearchResults = function() {
                       $scope.beerSearchResults = {};
                       $scope.brewerySearchResults = {};
+                    };
+
+                    $scope.toggleVoiceSearch = function() {
+                      $scope.voiceSearchActivated = !$scope.voiceSearchActivated;
                     };
 
                   }]

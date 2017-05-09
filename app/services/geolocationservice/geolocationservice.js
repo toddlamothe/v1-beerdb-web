@@ -26,7 +26,7 @@
               callback('Error detecting zip code from current location');
             }
           }, function errorCallback(response) {
-            $log.info('reverse geocode FAIL!');
+            $log.info('reverse geocode lookup failed!');
             return 'ERROR';
           });
         };
