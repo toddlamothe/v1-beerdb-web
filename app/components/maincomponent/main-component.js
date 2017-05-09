@@ -112,6 +112,7 @@
                         };
                       })
                       .filter(function(brewery) {
+                        // Filter any breweries that were undefined to prevent map errors
                         return typeof brewery !== 'undefined';
                       });
 
