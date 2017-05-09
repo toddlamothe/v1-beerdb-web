@@ -74,21 +74,19 @@
                           console.log('  call to beerService.getBreweryByLocation failed');
                           $scope.currentStatus = "getBreweries FAIL"
                           $scope.spinner(false);
-                        });
 
+                        });
                     };
 
                     $scope.buildBreweryLocationListLeaflet = function() {
                       $log.info( '  [buildBreweryLocationListLeaflet]');
                       // Clear existing locations list
                       $scope.locations = [];
-                      // Iterate through the list of brewery search results and extract a list of locations
-                      var breweries = $scope.brewerySearchResults;
-                      var brewery;
-                      for (var b = 0; b < breweries.length; b++) {
-                        brewery = breweries[b];
+                      // Map raw search results to desired format and filter out any undefined objects
+                      $scope.locations = $scope.brewerySearchResults.map(function(brewery) {
                         // Iterate through the list of locations for this brewery and append
                         for (var l=0; l < brewery.locations.length; l++) {
+
                           if(brewery.locations[l].isPrimary == "Y") {
 
                             var marker = {
@@ -108,12 +106,15 @@
                                 iconUrl: 'assets/images/Beer-icon-55x55.png',
                                 iconSize: [45, 45]
                               };
-                            }
-
-                            $scope.locations.push(marker);
+                            };
+                            return marker;
                           }
                         };
-                      };
+                      })
+                      .filter(function(brewery) {
+                        return typeof brewery !== 'undefined';
+                      });
+
                     };
 
                     $scope.buildToolTipHtml = function(brewery) {
