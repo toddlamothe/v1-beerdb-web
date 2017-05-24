@@ -66,45 +66,4 @@
     </div>
   </div>
 
-  <div class="row" ng-if="locationServicesEnabled">
-    <div class="beerdb-form-group col-md-12">
-      <div class="modal-footer">
-        <span ng-if="voiceSearchActivated">Listening...</span>
-        <i class="fa fa-microphone fa-2x" aria-hidden="true" ng-click="toggleVoiceSearch()"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="row" ng-if="userMediaEnabled && voiceSearchActivated">
-    <div class="beerdb-form-group col-md-12">
-      <div>
-        <audio autoplay></audio>
-        <script>
-          var successCallback = function(localMediaStream) {
-            // Get the audio dom element
-            // Audio will stream out of this html element
-            var audio = document.querySelector('audio');
-            // Now wire up the audio stream with the html
-            // element so we can hear the straming audio
-            audio.src = window.URL.createObjectURL(localMediaStream);
-
-            // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-            // See crbug.com/110938.
-            audio.onloadedmetadata = function(e) {
-              // Ready to go. Do some stuff.
-               console.log('hello!', e);
-            };
-          };
-
-          var errorCallback = function(e) {
-            console.log('Reeeejected!', e);
-          };
-
-          // Not showing vendor prefixes.
-          navigator.getUserMedia({audio: true}, successCallback, errorCallback);
-        </script>
-      </div>
-    </div>
-  </div>
-
 </div>
